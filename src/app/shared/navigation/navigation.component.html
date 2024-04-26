@@ -6,10 +6,23 @@
   </h3></div>
   <div class="nav-links">
 
+      <button id="pfp" routerLink="profile">
+        <img class="profile-pic" src="../../../assets/pfp/download.jpg" alt="pfp" width="50px">
+      </button>
+
+      <a id="notification-bell">
+        <img src="../../../assets/png/icons8-notification-50.png" alt="notification" width="30px">
+      </a>
+
+      <a id="search">
+        <img src="../../../assets/png/icons8-search-50.png" alt="search" width="30px">
+      </a>
+
       <div class="menu-container" [class.active]="isSidebarVisible">
         <button class="menu" (click)="toggleSidebar()">☰</button>
       </div>
-    </div>
+
+  </div>
 
 
 
