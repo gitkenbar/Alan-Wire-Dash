@@ -12,9 +12,17 @@
     </div>
   </div>
   <div class="top-left">
-    <div>
-      <button class="menu"> User/Auth related</button>
-    </div>
+        <button id="pfp" routerLink="profile">
+        <img class="profile-pic" src="../../../assets/pfp/download.jpg" alt="pfp" width="50px">
+      </button>
+
+      <a id="notification-bell">
+        <img src="../../../assets/png/icons8-notification-50.png" alt="notification" width="30px">
+      </a>
+
+      <a id="search">
+        <img src="../../../assets/png/icons8-search-50.png" alt="search" width="30px">
+      </a>
   </div>
 </nav>
 <div class="sidebar" [class.active]="isSidebarVisible">
