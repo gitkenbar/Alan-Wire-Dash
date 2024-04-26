@@ -1,0 +1,98 @@
+
+
+.navbar{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--UMBRA);
+  padding: 0.5rem 1rem;
+  position: sticky;
+  top: 0;
+  //width: 100%;
+}
+
+.navbar .corporate-logo {
+  display: flex;
+  padding: 1vh 2vh;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: var(--COPPER);
+  background-color: var(--ALUMINUM-LIGHT);
+  padding-left: 0.5rem;
+  border-radius: 6px;
+}
+
+.navbar .nav-links a {
+  color: #15446e;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.1 ease-in-out;
+  border-radius: 4px;
+  border: 1px solid #15446e;
+  background-color: #0A090C;
+}
+
+.navbar .nav-links a:hover,
+.navbar .nav-links a.active{
+  color: #2B2B2B;
+  background-color: #53DD6C;
+  border-radius: 4px;
+  transition: 0.3s ease;
+}
+
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.menu-container{
+  transition: width 0.3s ease;
+  width: 2rem;
+}
+.menu-container.active{
+  width: 275px;
+}
+.menu{
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--COPPER);
+}
+
+.sidebar{
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: var(--UMBRA);
+  border-left: 2px solid var(--ALANWIRE-BLUE-DARK);
+  transition: right 0.3s ease;
+}
+
+.sidebar.active{
+  right: 0px;
+}
+
+.sidebar a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-bottom: 1px solid var(--UMBRA);
+  color: var(--ALUMINUM-LIGHT);
+  background-color: var(--ALANWIRE-BLUE-LIGHT);
+  text-decoration: none;
+}
+
+.sidebar a:hover{
+  font-size: 1.2rem;
+  transition: 0.4s ease;
+  font-weight:bold;
+  color: var(--UMBRA);
+  background-color: var(--LIGHT-BLUE);
+}
+

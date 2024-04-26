@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* ## RESET ## */
+*{
+  margin: 0;
+  padding: 0;
+}
+
+/* ## VARIABLES ## */
+
+:root {
+  /* COLORS */
+  --UMBRA: #011828;
+  --PEN-UMBRA: #1f1f23;
+  --DARK-GREY: #515151;
+  --LIGHT-BLUE: #1ba3dd;
+  --ALANWIRE-BLUE-LIGHT: #005596;
+  --ALANWIRE-BLUE-DARK: #15446e;
+
+  /* NEXT-STEP */
+  --NEXT-STEP-DARK-GREY: #20303f;
+  --NEXT-STEP-BLUE: #15446e;
+  --NEXT-STEP-GREEN: #278235;
+  --NEXT-STEP-LIGHT-GREEN: #8bbb36;
+
+  /* METALS */
+  --COPPER: #B87333;
+  --ALUMINUM-LIGHT: #d0d0d0;
+  --ALUMINUM-DARK: #848789;
+
+  /* COATING */
+  --LIVE-RED: #eb4c42;
+  --GROUND-GREEN: #007100;
+}
+
+/* ## GLOBAL STYLES */
+
+body {
+  color: var(--NIGHT);
+  background-color: var(--ALUMINUM-DARK);
+}

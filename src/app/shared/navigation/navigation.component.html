@@ -1,0 +1,27 @@
+<nav class="navbar">
+  <div class="corporate-logo">
+    <img src="../../../assets/svg/logo.svg" alt="">
+    <h3 routerLink="" routerLinkActive="active" class="title">
+
+  </h3></div>
+  <div class="nav-links">
+
+      <div class="menu-container" [class.active]="isSidebarVisible">
+        <button class="menu" (click)="toggleSidebar()">☰</button>
+      </div>
+    </div>
+
+
+
+
+
+</nav>
+<div class="sidebar" [class.active]="isSidebarVisible">
+  <a routerLink="Production" routerLinkActive="active" (click)="toggleSidebar()">Production</a>
+  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">Quality</a>
+  <a routerLink="" routerLinkActive="active" (click)="toggleSidebar()">Inventory</a>
+  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">Material Cost</a>
+  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">Sales</a>
+  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">Contacts</a>
+  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">Etc</a>
+</div>
