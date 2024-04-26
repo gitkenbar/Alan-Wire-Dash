@@ -1,27 +1,49 @@
 <nav class="navbar">
-  <div class="corporate-logo">
-    <img src="../../../assets/svg/logo.svg" alt="">
-    <h3 routerLink="" routerLinkActive="active" class="title">
-
-  </h3></div>
-  <div class="nav-links">
-
+  <div class="navbar">
+    <div class="corporate-logo">
+      <img src="../../../assets/png/logo.png" height="64px">
+      @if(isSidebarVisible){
+      <img src="../../../assets/png/company-title.png" height="64px">}
+    </div>
+    <div class="nav-links">
       <div class="menu-container" [class.active]="isSidebarVisible">
         <button class="menu" (click)="toggleSidebar()">☰</button>
       </div>
     </div>
-
-
-
-
-
+  </div>
+  <div class="top-left">
+    <div>
+      <button class="menu"> User/Auth related</button>
+    </div>
+  </div>
 </nav>
 <div class="sidebar" [class.active]="isSidebarVisible">
-  <a routerLink="Production" routerLinkActive="active" (click)="toggleSidebar()">Production</a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">Quality</a>
-  <a routerLink="" routerLinkActive="active" (click)="toggleSidebar()">Inventory</a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">Material Cost</a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">Sales</a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">Contacts</a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">Etc</a>
+  <a routerLink="Production" routerLinkActive="active" (click)="toggleSidebar()">
+    <img src="../../../assets/svg/production.svg" alt="" >
+    @if(isSidebarVisible){Production}
+  </a>
+  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
+    <img src="../../../assets/svg/star.svg" alt="" >
+    @if(isSidebarVisible){Quality}
+  </a>
+  <a routerLink="" routerLinkActive="active" (click)="toggleSidebar()">
+    <img src="../../../assets/svg/list-square.svg" alt="" >
+    @if(isSidebarVisible){Inventory}
+  </a>
+  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
+    <img src="../../../assets/svg/piggy.svg" alt="" >
+    @if(isSidebarVisible){Material Cost}
+  </a>
+  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
+    <img src="../../../assets/svg/dollar.svg" alt="" >
+    @if(isSidebarVisible){Sales}
+  </a>
+  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
+    <img src="../../../assets/svg/phone.svg" alt="" >
+    @if(isSidebarVisible){Contacts}
+  </a>
+  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
+    <img src="../../../assets/svg/layers.svg" alt="" >
+    @if(isSidebarVisible){Etc}
+  </a>
 </div>
