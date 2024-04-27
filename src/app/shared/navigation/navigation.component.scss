@@ -9,17 +9,23 @@
   //width: 100%;
 }
 
-.navbar .corporate-logo {
+.corporate-logo {
   display: flex;
-  padding: 1vh 2vh;
+  padding: 1vh 3vh;
   font-size: 1.5rem;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   color: var(--COPPER);
   background-color: var(--ALUMINUM-LIGHT);
-  padding-left: 0.5rem;
   border-radius: 6px;
+  width: 1.8rem;
+  transition: width 0.3s ease;
+}
+
+.corporate-logo.active {
+  width: 12rem;
+  transition: width 0.3s ease;
 }
 
 .navbar .nav-links a {
@@ -70,12 +76,12 @@
   height: 100%;
   background-color: var(--UMBRA);
   border-left: 2px solid var(--ALANWIRE-BLUE-DARK);
-  transition: left 0.5s ease;
+  transition: width 0.3s ease;
 }
 
 .sidebar.active{
   width: 15rem;
-  transition: left 0.5s ease;
+  transition: width 0.3s ease;
 }
 
 .sidebar a{
@@ -91,20 +97,28 @@
 
 .sidebar a:hover{
   font-size: 1.06rem;
-  transition: 0.4s ease;
+  transition: 0.2s ease;
   font-weight:bold;
   color: var(--UMBRA);
   background-color: var(--LIGHT-BLUE);
 }
 
+// .sidebar a .sidebar-text {
+//   opacity: 0;
+//   transition: opacity 0.3s ease;
+// }
 
 .profile-pic {
   border-radius: 20px;
 }
 
-#pfp,
-#notification-bell,
-#search {
-  border-radius: 50px;
-  margin-right: .5em;
+.top-right {
+  padding-right: 1rem;
 }
+
+.top-right a,
+.top-right button.pfp {
+  border-radius: 50px;
+  margin: 1rem;
+}
+

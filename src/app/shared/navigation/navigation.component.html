@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="navbar">
-    <div class="corporate-logo">
+    <div class="corporate-logo" [class.active]="isSidebarVisible">
       <img src="../../../assets/png/logo.png" height="64px">
       @if(isSidebarVisible){
       <img src="../../../assets/png/company-title.png" height="64px">}
@@ -11,47 +11,49 @@
       </div>
     </div>
   </div>
-  <div class="top-left">
-        <button id="pfp" routerLink="profile">
-        <img class="profile-pic" src="../../../assets/pfp/download.jpg" alt="pfp" width="50px">
-      </button>
+  <div class="top-right">
 
-      <a id="notification-bell">
+      <a class="notification-bell">
         <img src="../../../assets/png/icons8-notification-50.png" alt="notification" width="30px">
       </a>
 
-      <a id="search">
+      <a class="search">
         <img src="../../../assets/png/icons8-search-50.png" alt="search" width="30px">
       </a>
+
+      <button class="pfp" routerLink="profile">
+        <img class="profile-pic" src="../../../assets/pfp/download.jpg" alt="pfp" width="50px">
+      </button>
+
   </div>
 </nav>
 <div class="sidebar" [class.active]="isSidebarVisible">
   <a routerLink="Production" routerLinkActive="active" (click)="toggleSidebar()">
     <img src="../../../assets/svg/production.svg" alt="" >
-    @if(isSidebarVisible){Production}
+    @if(isSidebarVisible){<span class="sidebar-text">Production</span>}
   </a>
   <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
     <img src="../../../assets/svg/star.svg" alt="" >
-    @if(isSidebarVisible){Quality}
+    @if(isSidebarVisible){<span class="sidebar-text">Quality</span>}
   </a>
   <a routerLink="" routerLinkActive="active" (click)="toggleSidebar()">
     <img src="../../../assets/svg/list-square.svg" alt="" >
-    @if(isSidebarVisible){Inventory}
+    @if(isSidebarVisible){<span class="sidebar-text">Inventory</span>}
   </a>
   <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
     <img src="../../../assets/svg/piggy.svg" alt="" >
-    @if(isSidebarVisible){Material Cost}
+    @if(isSidebarVisible){<span class="sidebar-text">Material Cost</span>}
   </a>
   <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
     <img src="../../../assets/svg/dollar.svg" alt="" >
-    @if(isSidebarVisible){Sales}
+    @if(isSidebarVisible){<span class="sidebar-text">Sales</span>}
   </a>
   <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
     <img src="../../../assets/svg/phone.svg" alt="" >
-    @if(isSidebarVisible){Contacts}
+    @if(isSidebarVisible){<span class="sidebar-text">Contacts</span>}
   </a>
   <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
     <img src="../../../assets/svg/layers.svg" alt="" >
-    @if(isSidebarVisible){Etc}
+    @if(isSidebarVisible){<span class="sidebar-text">Etc</span>}
   </a>
 </div>
