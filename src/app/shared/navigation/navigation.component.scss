@@ -18,7 +18,7 @@
   font-weight: bold;
   color: var(--COPPER);
   background-color: var(--ALUMINUM-LIGHT);
-  border-radius: 6px;
+  border-radius: 0 0 10px 0 ;
   width: 1.8rem;
   transition: width 0.3s ease;
 }
@@ -103,13 +103,13 @@
   background-color: var(--LIGHT-BLUE);
 }
 
-// .sidebar a .sidebar-text {
-//   opacity: 0;
-//   transition: opacity 0.3s ease;
-// }
+.sidebar-text {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
 .profile-pic {
-  border-radius: 20px;
+  border-radius: 50px;
 }
 
 .top-right {

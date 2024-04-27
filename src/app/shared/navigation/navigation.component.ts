@@ -20,7 +20,14 @@ export class NavigationComponent {
 
     } else {
       mySVG?.setAttribute("viewBox", "0")
+    };
 
-    }
+    setTimeout(() => {
+      const sidebarTexts = document.querySelectorAll('.sidebar-text');
+      sidebarTexts.forEach((element: Element) => {
+        const text = element as HTMLElement;
+        text.style.opacity = this.isSidebarVisible ? '1' : '0';
+      });
+    }, 100);
   }
 }
