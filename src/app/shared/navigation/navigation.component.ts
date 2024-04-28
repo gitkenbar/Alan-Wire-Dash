@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DepartmentService } from '../services/department.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -7,9 +9,28 @@ import { Component } from '@angular/core';
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss'
 })
-export class NavigationComponent {
+export class NavigationComponent implements OnInit, OnDestroy{
   isSidebarVisible:boolean = false;
+  menuDepartments:String[] | null = ["derp"];
+  private userDepartmentSubscription!: Subscription;
 
+  constructor(private departmentService:DepartmentService) {
+  }
+
+  ngOnInit(): void {
+    this.userDepartmentSubscription = this.departmentService.userDepartments.subscribe(departments => {
+      this.menuDepartments = departments;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.userDepartmentSubscription.unsubscribe();
+  }
+
+  // This method will toggle the display of charts within a given department in the sidebar
+  displayCharts(department:String){
+    return true;
+  }
 
   toggleSidebar(){
     let mySVG = document.getElementById('mySVG')
