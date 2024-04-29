@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { DepartmentService } from '../services/department.service';
+import { DepartmentService } from '../../../core/services/department.service';
 import { Subscription } from 'rxjs';
 
 @Component({

@@ -11,6 +11,8 @@
       </div>
     </div>
   </div>
+
+  <!-- Recommend outsourcing topbar to its own component -->
   <div class="top-right">
 
       <a class="search">
@@ -26,6 +28,7 @@
       </button>
 
   </div>
+  
 </nav>
 <div class="sidebar" [class.active]="isSidebarVisible">
   @for(department of menuDepartments; track department){
