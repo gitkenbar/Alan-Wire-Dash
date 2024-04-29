@@ -1,4 +1,11 @@
-export class Department {
+import { Chart } from "./chart.model";
 
-  constructor(){}
+export class Department {
+  public departmentName: string;
+  public chartArr: Chart[];
+
+  constructor(departmentName:string, chartArr:Chart[]){
+    this.departmentName = departmentName;
+    this.chartArr = chartArr;
+  }
 }

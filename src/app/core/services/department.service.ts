@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Department } from '../../shared/models/department.model';
+import { Chart } from '../../shared/models/chart.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,10 +9,24 @@ import { BehaviorSubject } from 'rxjs';
 export class DepartmentService {
 
   // This is used to locally store the value to be emitted
-  private myUserDepartments: String[] = ["Production", "Quality", "Inventory", "Material Cost", "Sales", "Wires", "Irrigation", "Bobbles"];
+  private myUserDepartments:Department[] = [
+    new Department("Bobbles", [
+      new Chart("Bobble Sales", `
+        <body>
+          <canvas id="myChart" width="400" height="400"></canvas>
+        </body>
+    `),
+      new Chart("Bobble Futures", `
+        <body>
+          <canvas id="myChart" width="400" height="400"></canvas>
+        </body>
+    `),
+    ]),
+    new Department("Widgets", []),
+    new Department("Wires", [])];
 
   //BehaviorSubject holds and emits an array of departments the user has access to
-  userDepartments = new BehaviorSubject<String[] | null>(this.myUserDepartments);
+  userDepartments = new BehaviorSubject<Department[] | null>(this.myUserDepartments);
 
   constructor() { }
 
