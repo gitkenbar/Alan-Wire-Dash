@@ -32,9 +32,9 @@
 </nav>
 <div class="sidebar" [class.active]="isSidebarVisible">
   @for(department of menuDepartments; track department){
-    <a (click)="displayCharts(department.departmentName)">
-      <img src="../../../assets/svg/production.svg" alt=`{{department.departmentName}}` >
-      @if(isSidebarVisible){<span class="sidebar-text">{{department.departmentName}}</span>}
+    <a (click)="displayCharts(department.department_name)">
+      <img src="../../../assets/svg/production.svg" alt=`{{department.department_name}}` >
+      @if(isSidebarVisible){<span class="sidebar-text">{{department.department_name}}</span>}
     </a>
   }
 
