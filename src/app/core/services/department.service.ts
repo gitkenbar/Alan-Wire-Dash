@@ -23,7 +23,13 @@ export class DepartmentService {
     `),
     ]),
     new Department("Widgets", []),
-    new Department("Wires", [])];
+    new Department("Wires", [
+      new Chart("Wire Shenanigans", `
+      <body>
+        <canvas id="myChart" width="400" height="400"></canvas>
+      </body>
+  `)]
+  )];
 
   //BehaviorSubject holds and emits an array of departments the user has access to
   userDepartments = new BehaviorSubject<Department[] | null>(this.myUserDepartments);

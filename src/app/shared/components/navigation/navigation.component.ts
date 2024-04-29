@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DepartmentService } from '../../../core/services/department.service';
 import { Subscription } from 'rxjs';
 import { Department } from '../../models/department.model';
+import { Chart } from '../../models/chart.model';
 
 @Component({
   selector: 'app-navigation',
@@ -12,6 +13,7 @@ import { Department } from '../../models/department.model';
 })
 export class NavigationComponent implements OnInit, OnDestroy{
   isSidebarVisible:boolean = false;
+  displayingCharts:string | null = null;
   menuDepartments:Department[] | null = [];
   private userDepartmentSubscription!: Subscription;
 
@@ -29,8 +31,15 @@ export class NavigationComponent implements OnInit, OnDestroy{
   }
 
   // This method will toggle the display of charts within a given department in the sidebar
-  displayCharts(department:String){
-    return true;
+  displayCharts(matchValue:string){
+    //Passes in the department_name as matchValue and checks for a match
+    if(this.displayingCharts == matchValue) {
+      //If it does match (meaning menu is open) it resets it to null
+      this.displayingCharts = null;
+    } else {
+      //Else it sets it equal so the menu opens
+    this.displayingCharts = matchValue;
+    }
   }
 
   toggleSidebar(){
