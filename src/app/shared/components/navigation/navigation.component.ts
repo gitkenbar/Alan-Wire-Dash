@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DepartmentService } from '../../../core/services/department.service';
 import { Subscription } from 'rxjs';
+import { Department } from '../../models/department.model';
 
 @Component({
   selector: 'app-navigation',
@@ -11,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class NavigationComponent implements OnInit, OnDestroy{
   isSidebarVisible:boolean = false;
-  menuDepartments:String[] | null = ["derp"];
+  menuDepartments:Department[] | null = [];
   private userDepartmentSubscription!: Subscription;
 
   constructor(private departmentService:DepartmentService) {
