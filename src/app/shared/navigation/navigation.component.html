@@ -1,49 +1,29 @@
 <nav class="navbar">
   <div class="navbar">
-    <div class="corporate-logo">
+    <div class="corporate-logo" [class.active]="checkSidebar()">
       <img src="../../../assets/png/logo.png" height="64px">
-      @if(isSidebarVisible){
+      @if(checkSidebar()){
       <img src="../../../assets/png/company-title.png" height="64px">}
     </div>
     <div class="nav-links">
-      <div class="menu-container" [class.active]="isSidebarVisible">
+      <div class="menu-container" [class.active]="checkSidebar()">
         <button class="menu" (click)="toggleSidebar()">☰</button>
       </div>
     </div>
   </div>
-  <div class="top-left">
-    <div>
-      <button class="menu"> User/Auth related</button>
-    </div>
+  <div class="top-right">
+
+      <a class="search">
+        <img src="../../../assets/svg/search.svg" alt="search">
+      </a>
+
+      <a class="notification-bell">
+        <img src="../../../assets/svg/notification-bell.svg" alt="notification">
+      </a>
+
+      <button class="pfp" routerLink="profile">
+        <img class="profile-pic" src="../../../assets/pfp/download.jpg" alt="pfp" width="50px">
+      </button>
+
   </div>
 </nav>
-<div class="sidebar" [class.active]="isSidebarVisible">
-  <a routerLink="Production" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/production.svg" alt="" >
-    @if(isSidebarVisible){Production}
-  </a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/star.svg" alt="" >
-    @if(isSidebarVisible){Quality}
-  </a>
-  <a routerLink="" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/list-square.svg" alt="" >
-    @if(isSidebarVisible){Inventory}
-  </a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/piggy.svg" alt="" >
-    @if(isSidebarVisible){Material Cost}
-  </a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/dollar.svg" alt="" >
-    @if(isSidebarVisible){Sales}
-  </a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/phone.svg" alt="" >
-    @if(isSidebarVisible){Contacts}
-  </a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/layers.svg" alt="" >
-    @if(isSidebarVisible){Etc}
-  </a>
-</div>

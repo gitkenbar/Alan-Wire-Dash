@@ -1,28 +1,18 @@
-
-
-.navbar{
+.navcontainer{
   display:flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
+  margin: 0 0 0 5rem
   //width: 100%;
 }
 
-.navbar .corporate-logo {
-  display: flex;
-  padding: 1vh 2vh;
-  font-size: 1.5rem;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  color: var(--COPPER);
-  background-color: var(--ALUMINUM-LIGHT);
-  padding-left: 0.5rem;
-  border-radius: 6px;
+.navcontainer.active{
+  margin: 0 0 0 13rem
 }
 
-.navbar .nav-links a {
+.navbarcontainer .nav-links a {
   color: #15446e;
   text-decoration: none;
   padding: 0.5rem 1rem;
@@ -32,8 +22,8 @@
   background-color: #0A090C;
 }
 
-.navbar .nav-links a:hover,
-.navbar .nav-links a.active{
+.navbarcontainer .nav-links a:hover,
+.navbarcontainer .nav-links a.active{
   color: #2B2B2B;
   background-color: #53DD6C;
   border-radius: 4px;
@@ -49,9 +39,7 @@
   transition: width 0.3s ease;
   width: 2rem;
 }
-/* .menu-container.active{
-  width: 275px;
-} */
+
 .menu{
   cursor: pointer;
   background: none;
@@ -64,37 +52,16 @@
   padding: 1px 6px;
 }
 
-.sidebar{
-  position: fixed;
-  width: 5rem;
-  height: 100%;
-  background-color: var(--UMBRA);
-  border-left: 2px solid var(--ALANWIRE-BLUE-DARK);
-  transition: left 0.5s ease;
+.profile-pic {
+  border-radius: 50px;
 }
 
-.sidebar.active{
-  width: 15rem;
-  transition: left 0.5s ease;
+.top-right {
+  padding-right: 1rem;
 }
 
-.sidebar a{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  border-bottom: 1px solid var(--UMBRA);
-  color: var(--ALUMINUM-LIGHT);
-  background-color: var(--ALANWIRE-BLUE-LIGHT);
-  text-decoration: none;
+.top-right a,
+.top-right button.pfp {
+  border-radius: 50px;
+  margin: 1rem;
 }
-
-.sidebar a:hover{
-  font-size: 1.06rem;
-  transition: 0.4s ease;
-  font-weight:bold;
-  color: var(--UMBRA);
-  background-color: var(--LIGHT-BLUE);
-}
-
-
