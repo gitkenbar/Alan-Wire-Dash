@@ -11,6 +11,8 @@
       </div>
     </div>
   </div>
+
+  <!-- Recommend outsourcing topbar to its own component -->
   <div class="top-right">
 
       <a class="search">
@@ -26,9 +28,17 @@
       </button>
 
   </div>
+  
 </nav>
 <div class="sidebar" [class.active]="isSidebarVisible">
-  <a routerLink="Production" routerLinkActive="active" (click)="toggleSidebar()">
+  @for(department of menuDepartments; track department){
+    <a (click)="displayCharts(department)">
+      <img src="../../../assets/svg/production.svg" alt=`{{department}}` >
+      @if(isSidebarVisible){<span class="sidebar-text">{{department}}</span>}
+    </a>
+  }
+
+  <!-- <a routerLink="Production" routerLinkActive="active" (click)="toggleSidebar()">
     <img src="../../../assets/svg/production.svg" alt="" >
     @if(isSidebarVisible){<span class="sidebar-text">Production</span>}
   </a>
@@ -55,5 +65,5 @@
   <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
     <img src="../../../assets/svg/layers.svg" alt="" >
     @if(isSidebarVisible){<span class="sidebar-text">Etc</span>}
-  </a>
+  </a> -->
 </div>
