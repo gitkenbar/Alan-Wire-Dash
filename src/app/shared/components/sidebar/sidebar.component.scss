@@ -58,3 +58,17 @@
 }
 
 
+.chart-item a{
+  font-size: 0.75em;
+  background-color: var(--ALUMINUM-LIGHT);
+  color: var(--UMBRA);
+}
+
+.chart-item a:hover{
+  background-color: var(--COPPER);
+}
+
+.chart-item-added a{
+  background-color: var(--NEXT-STEP-GREEN);
+
+}

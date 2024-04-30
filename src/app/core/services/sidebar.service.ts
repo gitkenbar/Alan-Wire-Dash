@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SidebarService {
-  isSidebarVisible:boolean = false;
+  public isSidebarVisible:boolean = false;
 
   constructor() { }
 

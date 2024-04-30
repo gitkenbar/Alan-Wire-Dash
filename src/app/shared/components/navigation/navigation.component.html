@@ -1,11 +1,14 @@
-<nav class="navcontainer" [class.active]="checkSidebar()">
+<nav class="navcontainer" [class.active]="isSideBarVisible()">
     <div class="nav-links">
-      <div class="menu-container" [class.active]="checkSidebar()">
-        <button class="menu" (click)="toggleSidebar()">☰</button>
+      <div class="menu-container" [class.active]="isSideBarVisible()">
+        @if(isSideBarVisible()){
+        <button class="menu" (click)="toggleSidebar()">⊲</button>
+        }
+        @if(!isSideBarVisible()){
+        <button class="menu" (click)="toggleSidebar()">⊳</button>
+        }
       </div>
     </div>
-
-  <!-- Recommend outsourcing topbar to its own component -->
   <div class="top-right">
 
       <a class="search">
@@ -23,32 +26,3 @@
   </div>
 
 </nav>
-
-<!-- Crazy nested a17 menu item rendering logic -->
-<!-- Need to figure out procedural icon matching. Consider random, or building into database as part of department table -->
-<div class="sidebar" [class.active]="isSidebarVisible">
-  @for(department of menuDepartments; track department){
-    <a (click)="displayCharts(department.department_name)">
-      <img src="../../../assets/svg/production.svg" alt=`{{department.department_name}}` >
-      @if(isSidebarVisible){<span class="sidebar-text">{{department.department_name}}</span>}
-    </a>
-    <!-- Chart Display logic begins here -->
-    @if(displayingCharts == department.department_name) {
-    @for(chart of department.chart_array; track chart){
-      @if(!checkChartStatus(chart)) {
-        <div class="chart-item">
-            <a (click)="addChart(chart)">
-              <span>{{chart.chart_title}}</span>
-            </a>
-        </div>
-      }
-      @if (checkChartStatus(chart)){
-      <div class="chart-item-added">
-        <a (click)="addChart(chart)">
-          <span>✓ {{chart.chart_title}}</span>
-        </a>
-      </div>
-      }
-    }}
-  }
-</div>
