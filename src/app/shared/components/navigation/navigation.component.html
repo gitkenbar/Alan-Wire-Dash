@@ -30,19 +30,31 @@
   </div>
 
 </nav>
+<!-- Crazy nested a17 menu item rendering logic -->
+<!-- Need to figure out procedural icon matching. Consider random, or building into database as part of department table -->
 <div class="sidebar" [class.active]="isSidebarVisible">
   @for(department of menuDepartments; track department){
     <a (click)="displayCharts(department.department_name)">
       <img src="../../../assets/svg/production.svg" alt=`{{department.department_name}}` >
       @if(isSidebarVisible){<span class="sidebar-text">{{department.department_name}}</span>}
     </a>
+    <!-- Chart Display logic begins here -->
     @if(displayingCharts == department.department_name) {
     @for(chart of department.chart_array; track chart){
-      <div class="chart-item">
-          <a>
-            <span >{{chart.chart_title}}</span>
-          </a>
+      @if(!checkChartStatus(chart)) {
+        <div class="chart-item">
+            <a (click)="addChart(chart)">
+              <span>{{chart.chart_title}}</span>
+            </a>
+        </div>
+      }
+      @if (checkChartStatus(chart)){
+      <div class="chart-item-added">
+        <a (click)="addChart(chart)">
+          <span>✓ {{chart.chart_title}}</span>
+        </a>
       </div>
+      }
     }}
   }
 

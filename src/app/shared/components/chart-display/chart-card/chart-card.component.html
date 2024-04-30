@@ -6,7 +6,10 @@
           <div [innerHTML]="chartFromParent?.chart_data"></div>
           <canvas id="myChart" width="200" height="200" style="border: 1px solid #000;"></canvas>
           <h5 class="card-title">{{chartFromParent?.chart_title}}</h5>
-          <a href="#" class="btn btn-primary">View Fullscreen</a>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-primary">Fullscreen</button>
+            <button type="button" class="btn btn-danger" (click)="removeChart(chartFromParent)">Remove</button>
+          </div>
         </div>
       </div>
     </div>

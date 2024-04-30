@@ -3,6 +3,7 @@ import { DepartmentService } from '../../../core/services/department.service';
 import { Subscription } from 'rxjs';
 import { Department } from '../../models/department.model';
 import { Chart } from '../../models/chart.model';
+import { ChartService } from '../../../core/services/chart.service';
 
 @Component({
   selector: 'app-navigation',
@@ -17,7 +18,7 @@ export class NavigationComponent implements OnInit, OnDestroy{
   menuDepartments:Department[] | null = [];
   private userDepartmentSubscription!: Subscription;
 
-  constructor(private departmentService:DepartmentService) {
+  constructor(private departmentService:DepartmentService, private chartService:ChartService) {
   }
 
   ngOnInit(): void {
@@ -41,6 +42,17 @@ export class NavigationComponent implements OnInit, OnDestroy{
     this.displayingCharts = matchValue;
     }
   }
+
+  //Adds the selected chart
+  addChart(chart:Chart) {
+    this.chartService.addChart(chart);
+  }
+
+  checkChartStatus(chart:Chart){
+    return this.chartService.checkChartPresence(chart);
+  }
+
+
 
   toggleSidebar(){
     let mySVG = document.getElementById('mySVG')
