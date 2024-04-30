@@ -1,11 +1,10 @@
-
-
-.navbar{
+.navcontainer{
   display:flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
+  margin: 0 0 0 5rem
   //width: 100%;
 }
 
@@ -26,9 +25,11 @@
 .corporate-logo.active {
   width: 11rem;
   transition: width 0.3s ease;
+.navcontainer.active{
+  margin: 0 0 0 13rem
 }
 
-.navbar .nav-links a {
+.navbarcontainer .nav-links a {
   color: #15446e;
   text-decoration: none;
   padding: 0.5rem 1rem;
@@ -38,8 +39,8 @@
   background-color: #0A090C;
 }
 
-.navbar .nav-links a:hover,
-.navbar .nav-links a.active{
+.navbarcontainer .nav-links a:hover,
+.navbarcontainer .nav-links a.active{
   color: #2B2B2B;
   background-color: #53DD6C;
   border-radius: 4px;
@@ -55,9 +56,7 @@
   transition: width 0.3s ease;
   width: 2rem;
 }
-/* .menu-container.active{
-  width: 275px;
-} */
+
 .menu{
   cursor: pointer;
   background: none;
@@ -83,16 +82,18 @@
   width: 15rem;
   transition: width 0.3s ease;
 }
+.profile-pic {
+  border-radius: 50px;
+}
 
-.sidebar a{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  border-bottom: 1px solid var(--UMBRA);
-  color: var(--ALUMINUM-LIGHT);
-  background-color: var(--ALANWIRE-BLUE-LIGHT);
-  text-decoration: none;
+.top-right {
+  padding-right: 1rem;
+}
+
+.top-right a,
+.top-right button.pfp {
+  border-radius: 50px;
+  margin: 1rem;
 }
 
 .sidebar a:hover{
