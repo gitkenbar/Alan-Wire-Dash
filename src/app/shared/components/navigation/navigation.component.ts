@@ -13,7 +13,6 @@ import { SidebarService } from '../../../core/services/sidebar.service';
   styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent implements OnInit, OnDestroy{
-  isSidebarVisible:boolean = false;
   displayingCharts:string | null = null;
   menuDepartments:Department[] | null = [];
   private userDepartmentSubscription!: Subscription;
@@ -53,13 +52,6 @@ export class NavigationComponent implements OnInit, OnDestroy{
 
   toggleSidebar(){
     this.sidebar.toggleSidebar()
-    setTimeout(() => {
-      const sidebarTexts = document.querySelectorAll('.sidebar-text');
-      sidebarTexts.forEach((element: Element) => {
-        const text = element as HTMLElement;
-        text.style.opacity = this.isSidebarVisible ? '1' : '0';
-      });
-    }, 100);
   }
 
 }

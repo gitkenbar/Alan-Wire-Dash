@@ -1,9 +1,6 @@
 <app-sidebar/>
-<div class="dashboard-container">
-  <div class="col-3">
-    <app-navigation/>
-  </div>
-
+<app-navigation/>
+<div class="dashboard-container" [class.active]="checkSidebar()">
   <div class="col-9">
     <app-chart-display/>
   </div>
