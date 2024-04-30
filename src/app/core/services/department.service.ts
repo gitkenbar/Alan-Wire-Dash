@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+<<<<<<< Updated upstream
+=======
+import { Department } from '../../shared/models/department.model';
+import { Chart } from '../../shared/models/chart.model';
+import { HttpDataService } from './http-data.service';
+>>>>>>> Stashed changes
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +18,18 @@ export class DepartmentService {
   //BehaviorSubject holds and emits an array of departments the user has access to
   userDepartments = new BehaviorSubject<String[] | null>(this.myUserDepartments);
 
-  constructor() { }
+  constructor(private httpService:HttpDataService) { }
 
   //Uses HTTP Service to retrieve array and emit through userDepartments BehaviorSubject
-  fetchUserDepartments() {
+  fetchUserDepartments(id:number) {
+    this.httpService.getUserDepartments(id).subscribe({
+      next: (data) => {
+        this.userDepartments.next(data);
+      },
+      error: (error) => {
+        console.error('Error fetching departments', error);
+      }
+    })
     return true;
   }
 
