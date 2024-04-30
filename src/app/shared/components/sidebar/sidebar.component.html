@@ -1,0 +1,37 @@
+<div class="sidebar-container" [class.active]="checkSidebar()">
+  <div class="corporate-logo" [class.active]="checkSidebar()">
+    <img src="../../../assets/png/logo.png" height="64px">
+    @if(checkSidebar()){
+    <img src="../../../assets/png/company-title.png" height="64px">}
+  </div>
+  <div class="sidebar" [class.active]="checkSidebar()">
+    <a routerLink="Production" routerLinkActive="active" (click)="toggleSidebar()">
+      <img src="../../../assets/svg/production.svg" alt="">
+      @if(checkSidebar()){<span class="sidebar-text">Production</span>}
+    </a>
+    <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
+      <img src="../../../assets/svg/star.svg" alt="" >
+      @if(checkSidebar()){<span class="sidebar-text">Quality</span>}
+    </a>
+    <a routerLink="" routerLinkActive="active" (click)="toggleSidebar()">
+      <img src="../../../assets/svg/list-square.svg" alt="" >
+      @if(checkSidebar()){<span class="sidebar-text">Inventory</span>}
+    </a>
+    <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
+      <img src="../../../assets/svg/piggy.svg" alt="" >
+      @if(checkSidebar()){<span class="sidebar-text">Material Cost</span>}
+    </a>
+    <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
+      <img src="../../../assets/svg/dollar.svg" alt="" >
+      @if(checkSidebar()){<span class="sidebar-text">Sales</span>}
+    </a>
+    <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
+      <img src="../../../assets/svg/phone.svg" alt="" >
+      @if(checkSidebar()){<span class="sidebar-text">Contacts</span>}
+    </a>
+    <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
+      <img src="../../../assets/svg/layers.svg" alt="" >
+      @if(checkSidebar()){<span class="sidebar-text">Etc</span>}
+    </a>
+  </div>
+</div>
