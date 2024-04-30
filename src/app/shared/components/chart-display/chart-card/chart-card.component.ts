@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Chart } from '../../../models/chart.model';
 
 @Component({
   selector: 'app-chart-card',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
   templateUrl: './chart-card.component.html',
   styleUrl: './chart-card.component.scss'
 })
-export class ChartCardComponent {
+export class ChartCardComponent implements OnInit {
+  @Input() chartFromParent: Chart | null = null;
 
+  ngOnInit(): void {
+    //We are going to need some fancy code here to get this to render anything other than raw HTML
+    //But it can be done. 
+  }
 }
+

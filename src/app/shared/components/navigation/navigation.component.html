@@ -38,9 +38,11 @@
     </a>
     @if(displayingCharts == department.department_name) {
     @for(chart of department.chart_array; track chart){
-      <a>
-        <span>{{chart.chart_title}}</span>
-      </a>
+      <div class="chart-item">
+          <a>
+            <span >{{chart.chart_title}}</span>
+          </a>
+      </div>
     }}
   }
 
