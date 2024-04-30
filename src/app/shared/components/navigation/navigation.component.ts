@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { Department } from '../../models/department.model';
 import { Chart } from '../../models/chart.model';
 import { ChartService } from '../../../core/services/chart.service';
+import { SidebarService } from '../../../core/services/sidebar.service';
+
 
 @Component({
   selector: 'app-navigation',
@@ -13,13 +15,15 @@ import { ChartService } from '../../../core/services/chart.service';
   styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent implements OnInit, OnDestroy{
-  isSidebarVisible:boolean = false;
   displayingCharts:string | null = null;
   menuDepartments:Department[] | null = [];
   private userDepartmentSubscription!: Subscription;
 
-  constructor(private departmentService:DepartmentService, private chartService:ChartService) {
-  }
+  constructor(
+    private departmentService:DepartmentService,
+    private sidebar:SidebarService, 
+    private chartService:ChartService
+  ) {}
 
   ngOnInit(): void {
     this.userDepartmentSubscription = this.departmentService.userDepartments.subscribe(departments => {
@@ -61,16 +65,12 @@ export class NavigationComponent implements OnInit, OnDestroy{
     if(this.isSidebarVisible){
       mySVG?.setAttribute("width", "-150")
 
-    } else {
-      mySVG?.setAttribute("viewBox", "0")
-    };
-
-    setTimeout(() => {
-      const sidebarTexts = document.querySelectorAll('.sidebar-text');
-      sidebarTexts.forEach((element: Element) => {
-        const text = element as HTMLElement;
-        text.style.opacity = this.isSidebarVisible ? '1' : '0';
-      });
-    }, 100);
+  checkSidebar(): boolean{
+    return this.sidebar.isSidebarVisible
   }
+
+  toggleSidebar(){
+    this.sidebar.toggleSidebar()
+  }
+
 }
