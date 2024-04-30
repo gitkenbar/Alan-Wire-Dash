@@ -5,10 +5,12 @@ import { ChartDisplayComponent } from './shared/components/chart-display/chart-d
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { SidebarService } from './core/services/sidebar.service';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, NavigationComponent, ChartDisplayComponent, SidebarComponent],
+
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
