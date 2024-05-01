@@ -24,15 +24,17 @@ export class HttpDataService {
     )
   }
 
-  // ADMIN ONLY
-  getAllDepartments() {
-    return this.http.get<Department[]>(`${environment.apiUrl}/departments`).pipe(
+  addUserCharts(id:number, data:any) {
+    return this.http.post<Chart[]>(`${environment.apiUrl}/user/${id}/user_charts`, data).pipe(
       catchError(this.handleError)
     )
   }
 
-  addUserCharts(id:number, data:any) {
-    return this.http.post<Chart[]>(`${environment.apiUrl}/user/${id}/user_charts`, data).pipe(
+
+
+  // ADMIN ONLY
+  getAllDepartments() {
+    return this.http.get<Department[]>(`${environment.apiUrl}/departments`).pipe(
       catchError(this.handleError)
     )
   }
