@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-<<<<<<< Updated upstream
-=======
 import { Department } from '../../shared/models/department.model';
 import { Chart } from '../../shared/models/chart.model';
 import { HttpDataService } from './http-data.service';
->>>>>>> Stashed changes
 
 @Injectable({
   providedIn: 'root'
@@ -23,10 +20,10 @@ export class DepartmentService {
   //Uses HTTP Service to retrieve array and emit through userDepartments BehaviorSubject
   fetchUserDepartments(id:number) {
     this.httpService.getUserDepartments(id).subscribe({
-      next: (data) => {
+      next: (data:any) => {
         this.userDepartments.next(data);
       },
-      error: (error) => {
+      error: (error:any) => {
         console.error('Error fetching departments', error);
       }
     })
