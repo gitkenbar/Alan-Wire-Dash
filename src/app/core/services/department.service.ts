@@ -4,16 +4,37 @@ import { Department } from '../../shared/models/department.model';
 import { Chart } from '../../shared/models/chart.model';
 import { HttpDataService } from './http-data.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class DepartmentService {
 
   // This is used to locally store the value to be emitted
-  private myUserDepartments: String[] = ["Production", "Quality", "Inventory", "Material Cost", "Sales", "Wires", "Irrigation", "Bobbles"];
+  private myUserDepartments:Department[] = [
+    new Department("Bobbles", [
+      new Chart("Bobble Sales", `
+        <body>
+          <canvas id="myChart" width="400" height="400"></canvas>
+        </body>
+    `),
+      new Chart("Bobble Futures", `
+        <body>
+          <canvas id="myChart" width="400" height="400"></canvas>
+        </body>
+    `),
+    ]),
+    new Department("Widgets", []),
+    new Department("Wires", [
+      new Chart("Wire Shenanigans", `
+      <body>
+        <canvas id="myChart" width="400" height="400"></canvas>
+      </body>
+  `)]
+  )];
 
   //BehaviorSubject holds and emits an array of departments the user has access to
-  userDepartments = new BehaviorSubject<String[] | null>(this.myUserDepartments);
+  userDepartments = new BehaviorSubject<Department[] | null>(this.myUserDepartments);
 
   constructor(private httpService:HttpDataService) { }
 

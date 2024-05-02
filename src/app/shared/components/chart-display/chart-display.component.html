@@ -1,15 +1,9 @@
 <p>Your Cool Alan Wire Dashboard</p>
-<div class="row gx-1 gy-4 ">
-  <div class="col-6">
-    <app-chart-card/>
-  </div>
-  <div class="col-4">
-    <app-chart-card/>
-  </div>
-  <div class="col-2">
-    <app-chart-card/>
-  </div>
-  <div class="col-4">
-    <app-chart-card/>
-  </div>
+<!-- The Media Queries Here need some work -->
+<div class="row gx-1 gy-4">
+  @for (chart of charts; track chart) {
+    <div class="col-4 chart-container">
+      <app-chart-card [chartFromParent]="chart"/>
+    </div>
+  }
 </div>

@@ -1,18 +1,14 @@
-<nav class="navbar">
-  <div class="navbar">
-    <div class="corporate-logo" [class.active]="isSidebarVisible">
-      <img src="../../../assets/png/logo.png" height="64px">
-      @if(isSidebarVisible){
-      <img src="../../../assets/png/company-title.png" height="64px">}
-    </div>
+<nav class="navcontainer" [class.active]="isSideBarVisible()">
     <div class="nav-links">
-      <div class="menu-container" [class.active]="isSidebarVisible">
-        <button class="menu" (click)="toggleSidebar()">☰</button>
+      <div class="menu-container" [class.active]="isSideBarVisible()">
+        @if(isSideBarVisible()){
+        <button class="menu" (click)="toggleSidebar()">⊲</button>
+        }
+        @if(!isSideBarVisible()){
+        <button class="menu" (click)="toggleSidebar()">⊳</button>
+        }
       </div>
     </div>
-  </div>
-
-  <!-- Recommend outsourcing topbar to its own component -->
   <div class="top-right">
 
       <a class="search">
@@ -28,42 +24,5 @@
       </button>
 
   </div>
-  
-</nav>
-<div class="sidebar" [class.active]="isSidebarVisible">
-  @for(department of menuDepartments; track department){
-    <a (click)="displayCharts(department)">
-      <img src="../../../assets/svg/production.svg" alt=`{{department}}` >
-      @if(isSidebarVisible){<span class="sidebar-text">{{department}}</span>}
-    </a>
-  }
 
-  <!-- <a routerLink="Production" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/production.svg" alt="" >
-    @if(isSidebarVisible){<span class="sidebar-text">Production</span>}
-  </a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/star.svg" alt="" >
-    @if(isSidebarVisible){<span class="sidebar-text">Quality</span>}
-  </a>
-  <a routerLink="" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/list-square.svg" alt="" >
-    @if(isSidebarVisible){<span class="sidebar-text">Inventory</span>}
-  </a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/piggy.svg" alt="" >
-    @if(isSidebarVisible){<span class="sidebar-text">Material Cost</span>}
-  </a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/dollar.svg" alt="" >
-    @if(isSidebarVisible){<span class="sidebar-text">Sales</span>}
-  </a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/phone.svg" alt="" >
-    @if(isSidebarVisible){<span class="sidebar-text">Contacts</span>}
-  </a>
-  <a routerLink="quality" routerLinkActive="active" (click)="toggleSidebar()">
-    <img src="../../../assets/svg/layers.svg" alt="" >
-    @if(isSidebarVisible){<span class="sidebar-text">Etc</span>}
-  </a> -->
-</div>
+</nav>
