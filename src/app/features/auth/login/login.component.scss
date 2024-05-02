@@ -1,0 +1,22 @@
+.corporate-logo {
+  display: flex;
+  padding: 1vh 3vh;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: var(--COPPER);
+  // background-color: var(--ALUMINUM-LIGHT);
+  border-radius: 0 0 10px 0 ;
+  width: 1rem;
+  transition: width 0.3s ease;
+}
+
+.form-label{
+  color: #1976D2;
+  font-size: 16px;
+}
+
+
+
+

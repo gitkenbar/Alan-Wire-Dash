@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
@@ -9,7 +10,7 @@ import { SidebarService } from './core/services/sidebar.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavigationComponent, ChartDisplayComponent, SidebarComponent],
+  imports: [RouterOutlet, NavigationComponent, ChartDisplayComponent, SidebarComponent, CommonModule],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
