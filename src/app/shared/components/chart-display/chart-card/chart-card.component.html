@@ -2,11 +2,14 @@
   <div class="row">
     <div>
       <div class="card">
-        <img src="https://via.placeholder.com/150" class="card-img-top" alt="Placeholder Image">
         <div class="card-body">
-          <h5 class="card-title">Chart Title</h5>
-          <p class="card-text">Information here to populate procedurally</p>
-          <a href="#" class="btn btn-primary">Read More</a>
+          <div [innerHTML]="chartFromParent?.chart_data"></div>
+          <canvas id="myChart" width="200" height="200" style="border: 1px solid #000;"></canvas>
+          <h5 class="card-title">{{chartFromParent?.chart_title}}</h5>
+          <div class="d-flex justify-content-between">
+            <button class="btn btn-primary">Fullscreen</button>
+            <button type="button" class="btn btn-danger" (click)="removeChart(chartFromParent)">Remove</button>
+          </div>
         </div>
       </div>
     </div>

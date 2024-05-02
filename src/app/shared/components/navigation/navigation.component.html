@@ -1,11 +1,14 @@
-<nav class="navcontainer" [class.active]="checkSidebar()">
+<nav class="navcontainer" [class.active]="isSideBarVisible()">
     <div class="nav-links">
-      <div class="menu-container" [class.active]="checkSidebar()">
-        <button class="menu" (click)="toggleSidebar()">☰</button>
+      <div class="menu-container" [class.active]="isSideBarVisible()">
+        @if(isSideBarVisible()){
+        <button class="menu" (click)="toggleSidebar()">⊲</button>
+        }
+        @if(!isSideBarVisible()){
+        <button class="menu" (click)="toggleSidebar()">⊳</button>
+        }
       </div>
     </div>
-
-  <!-- Recommend outsourcing topbar to its own component -->
   <div class="top-right">
 
       <a class="search">
