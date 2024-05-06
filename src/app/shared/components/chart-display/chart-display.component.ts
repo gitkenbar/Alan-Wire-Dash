@@ -3,6 +3,7 @@ import { ChartCardComponent } from './chart-card/chart-card.component';
 import { Chart } from '../../models/chart.model';
 import { ChartService } from '../../../core/services/chart.service';
 import { Subscription } from 'rxjs';
+import { SidebarService } from '../../../core/services/sidebar.service';
 
 @Component({
   selector: 'app-chart-display',
@@ -27,7 +28,9 @@ export class ChartDisplayComponent implements OnInit, OnDestroy {
   `),
   ];
 
-  constructor(private chartService:ChartService){}
+  constructor(
+    private chartService:ChartService,
+    private sidebar:SidebarService){}
 
   //EXPIREMNTAL NONSENSE
   // setSize(number:number){
@@ -46,4 +49,7 @@ export class ChartDisplayComponent implements OnInit, OnDestroy {
     this.userChartSubscription.unsubscribe();
   }
 
+  checkSidebar(): boolean{
+    return this.sidebar.isSidebarVisible
+  }
 }

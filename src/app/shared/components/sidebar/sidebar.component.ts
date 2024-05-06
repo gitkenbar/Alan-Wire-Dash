@@ -36,6 +36,10 @@ export class SidebarComponent implements OnInit, OnDestroy{
 
   // This method will toggle the display of charts within a given department in the sidebar
   displayCharts(matchValue:string){
+    // Expands the sidebar, if it is minimized
+    if(!this.sidebarService.isSidebarVisible){
+      this.sidebarService.toggleSidebar()
+    }
     //Passes in the department_name as matchValue and checks for a match
     if(this.displayingCharts == matchValue) {
       //If it does match (meaning menu is open) it resets it to null

@@ -21,3 +21,6 @@ Objective: Design & develop a visually pleasing dynamic dashboard that displays 
 Tech Stack:
 
 Use what you know or MEAN: MongoDB, ExpressJS, Angular, Node
+
+
+Scrap % - 7% or lower is good(BONUS MONEY)
