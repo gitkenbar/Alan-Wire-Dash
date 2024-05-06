@@ -47,12 +47,8 @@ export class AuthenticationService {
     const headers = {'authorization': `${this.getToken()}`};
     return this.http.get(`${environment.apiUrl}/current_user`, {headers: headers})
   }
-
-  // https://www.youtube.com/watch?v=o-mRH-GFK0M&pp=ygUTaHR0cGhlYWRlcnMgYW5ndWxhcg%3D%3D
 }
-// https://www.youtube.com/watch?v=spEviYIaYAI
-// https://www.youtube.com/watch?v=KO0Yid7FfBA
-// import { Http, Headers, Response } from '@angular/http';
+
 
 
 
