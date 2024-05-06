@@ -5,12 +5,13 @@ import { NavigationComponent } from './shared/components/navigation/navigation.c
 import { ChartDisplayComponent } from './shared/components/chart-display/chart-display.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { SidebarService } from './core/services/sidebar.service';
+import { ChartSandboxComponent } from './shared/components/chart-display/chart-sandbox/chart-sandbox.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavigationComponent, ChartDisplayComponent, SidebarComponent, CommonModule],
+  imports: [RouterOutlet, NavigationComponent, ChartDisplayComponent, SidebarComponent, CommonModule, ChartSandboxComponent],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

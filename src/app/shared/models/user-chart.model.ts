@@ -1,4 +1,8 @@
-export class Chart {
+// import Chart from "chart.js";
+
+// work on integration of Chart
+
+export class UserChart {
   public chart_title: string;
   public chart_data: string;
 

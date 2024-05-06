@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DepartmentService } from '../../../core/services/department.service';
 import { Subscription } from 'rxjs';
 import { Department } from '../../models/department.model';
-import { Chart } from '../../models/chart.model';
+import { UserChart } from '../../models/user-chart.model';
 import { ChartService } from '../../../core/services/chart.service';
 import { SidebarService } from '../../../core/services/sidebar.service';
 
@@ -51,11 +51,11 @@ export class SidebarComponent implements OnInit, OnDestroy{
   }
 
   //Adds the selected chart
-  addChart(chart:Chart) {
+  addChart(chart:UserChart) {
     this.chartService.addChart(chart);
   }
 
-  checkChartStatus(chart:Chart){
+  checkChartStatus(chart:UserChart){
     return this.chartService.checkChartPresence(chart);
   }
 

@@ -1,7 +1,8 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { Chart } from '../../../models/chart.model';
+import { UserChart } from '../../../models/user-chart.model';
 import { ChartService } from '../../../../core/services/chart.service';
 import { SidebarService } from '../../../../core/services/sidebar.service';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-chart-card',
@@ -11,13 +12,13 @@ import { SidebarService } from '../../../../core/services/sidebar.service';
   styleUrl: './chart-card.component.scss'
 })
 export class ChartCardComponent implements OnInit {
-  @Input() chartFromParent: Chart | null = null;
+  @Input() chartFromParent: UserChart | null = null;
   @Input() cardIndex!: number;
   constructor(
     private chartService:ChartService,
   ){}
 
-  removeChart(chart:Chart | null){
+  removeChart(chart:UserChart | null){
     //Checks for truthy to enforce type safety
     if(chart){
     this.chartService.removeChart(chart);

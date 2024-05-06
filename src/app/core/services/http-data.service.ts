@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Department } from '../../shared/models/department.model';
 import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
-import { Chart } from '../../shared/models/chart.model';
+import { UserChart } from '../../shared/models/user-chart.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +18,14 @@ export class HttpDataService {
     )
   }
 
-  getUserCharts(id:number): Observable<Chart[]> {
-    return this.http.get<Chart[]>(`${environment.apiUrl}/user/${id}/user_charts`).pipe(
+  getUserCharts(id:number): Observable<UserChart[]> {
+    return this.http.get<UserChart[]>(`${environment.apiUrl}/user/${id}/user_charts`).pipe(
       catchError(this.handleError)
     )
   }
 
   addUserCharts(id:number, data:any) {
-    return this.http.post<Chart[]>(`${environment.apiUrl}/user/${id}/user_charts`, data).pipe(
+    return this.http.post<UserChart[]>(`${environment.apiUrl}/user/${id}/user_charts`, data).pipe(
       catchError(this.handleError)
     )
   }
@@ -40,7 +40,7 @@ export class HttpDataService {
   }
 
   addUserDepartments(id:number, data:any) {
-    return this.http.post<Chart[]>(`${environment.apiUrl}/user/${id}/user_department`, data).pipe(
+    return this.http.post<UserChart[]>(`${environment.apiUrl}/user/${id}/user_department`, data).pipe(
       catchError(this.handleError)
     )
   }

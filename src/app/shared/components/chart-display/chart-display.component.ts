@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ChartCardComponent } from './chart-card/chart-card.component';
-import { Chart } from '../../models/chart.model';
+import { UserChart } from '../../models/user-chart.model';
 import { ChartService } from '../../../core/services/chart.service';
 import { Subscription } from 'rxjs';
 import { SidebarService } from '../../../core/services/sidebar.service';
@@ -15,18 +15,12 @@ import { SidebarService } from '../../../core/services/sidebar.service';
 export class ChartDisplayComponent implements OnInit, OnDestroy {
   private userChartSubscription!:Subscription;
   //filler data until set with behavior subject
-  charts:Chart[] | null = [
-    new Chart("Bobble Sales", `
-      <body>
-        <h5>Injected HTML:</h5>
-      </body>
-  `),
-    new Chart("Bobble Futures", `
-      <body>
-        <p style="color: red;">Literally stick a whole webpage in here</p>
-      </body>
-  `),
-  ];
+  charts:UserChart[] | null = null
+  // [
+  //   //Under Construction to implement chart.js
+  //   // new UserChart("Bobble Sales", new Chart()),
+  //   // new UserChart("Bobble Futures", new Chart())
+  // ];
 
   constructor(
     private chartService:ChartService,
