@@ -10,7 +10,7 @@
 
 <app-sidebar/>
 <app-navigation/>
-<div class="dashboard-container" [class.active]="checkSidebar()">
+<div class="dashboard-container" [class.sidebar-full]="checkSidebar()">
   <div class="col-9">
     <app-chart-display/>
   </div>

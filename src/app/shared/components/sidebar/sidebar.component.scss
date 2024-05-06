@@ -12,12 +12,11 @@
   transition: width 0.3s ease;
 }
 
-
 .sidebar-container{
   position: fixed;
   width: 5rem;
 }
-.sidebar-container.active {
+.sidebar-container.sidebar-full {
   width: 13rem;
 }
 
@@ -28,7 +27,7 @@
   transition: width 0.3s ease;
 }
 
-.sidebar.active{
+.sidebar.sidebar-full{
   transition: left 0.3s ease;
 }
 

@@ -1,10 +1,10 @@
-<div class="sidebar-container" [class.active]="isSideBarVisible()">
-  <div class="corporate-logo" [class.active]="isSideBarVisible()">
+<div class="sidebar-container" [class.sidebar-full]="isSideBarVisible()">
+  <div class="corporate-logo" [class.sidebar-full]="isSideBarVisible()">
     <img src="../../../assets/png/logo.png" height="64px">
     @if(isSideBarVisible()){
     <img src="../../../assets/png/company-title.png" height="64px">}
   </div>
-  <div class="sidebar" [class.active]="isSideBarVisible()">
+  <div class="sidebar" [class.sidebar-full]="isSideBarVisible()">
     @for(department of menuDepartments; track department){
       <a (click)="displayCharts(department.department_name)">
         <img src="../../../assets/svg/production.svg" alt=`{{department.department_name}}` >
@@ -32,7 +32,7 @@
 </div>
 </div>
 
-  <!-- <div class="sidebar" [class.active]="isSideBarVisible()">
+  <!-- <div class="sidebar" [class.sidebar-full]="isSideBarVisible()">
     <a routerLink="Production" routerLinkActive="active" (click)="toggleSidebar()">
       <img src="../../../assets/svg/production.svg" alt="">
       @if(isSideBarVisible()){<span class="sidebar-text">Production</span>}

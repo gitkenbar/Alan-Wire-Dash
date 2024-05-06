@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Chart } from '../../../models/chart.model';
 import { ChartService } from '../../../../core/services/chart.service';
+import { SidebarService } from '../../../../core/services/sidebar.service';
 
 @Component({
   selector: 'app-chart-card',
@@ -11,8 +12,10 @@ import { ChartService } from '../../../../core/services/chart.service';
 })
 export class ChartCardComponent implements OnInit {
   @Input() chartFromParent: Chart | null = null;
-
-  constructor(private chartService:ChartService){}
+  @Input() cardIndex!: number;
+  constructor(
+    private chartService:ChartService,
+  ){}
 
   removeChart(chart:Chart | null){
     //Checks for truthy to enforce type safety
@@ -24,6 +27,10 @@ export class ChartCardComponent implements OnInit {
   ngOnInit(): void {
     //We are going to need some fancy code here to get this to render anything other than raw HTML
     //But it can be done.
+  }
+
+  makeFullscreen(fullscreenCardIndex: number){
+
   }
 
 }
