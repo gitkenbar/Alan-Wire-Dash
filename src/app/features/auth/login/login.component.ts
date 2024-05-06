@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthenticationService } from '../../../core/services/authentication.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -27,11 +28,21 @@ export class LoginComponent {
 
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
-      // this.authService.login(email, password);
       this.authService.login(email, password).subscribe({
-        next: (res:any) => {
-          console.log(res)
-          // this.authService.setToken(res.token);
+        next: (res:HttpResponse<any>) => {
+          // console.log(res.body)
+          // console.log(res.headers.keys())
+          // TODO Relocate this code to authentication service
+          console.log(res.headers.get('authorization'))
+          let text: string | null = res.headers.get('authorization')
+          if (text !== null){
+            const tokenArray = text.split(' ')
+            let token = tokenArray[1]
+            this.authService.setToken(token)
+            console.log(this.authService.getToken())
+          }
+          console.log(this.authService.getToken())
+
           this.router.navigate(['/dashboard']);
         },
         error: (error:any) => {
@@ -41,4 +52,5 @@ export class LoginComponent {
       })
     }
   }
+
 }

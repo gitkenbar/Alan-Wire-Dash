@@ -35,6 +35,13 @@ export class SignupComponent {
             next: (loginRes:any) => {
               console.log(loginRes);
               this.router.navigate(['/dashboard'])
+              let text: string | null = loginRes.headers.get('authorization')
+              if (text !== null){
+                const tokenArray = text.split(' ')
+                let token = tokenArray[1]
+                this.authService.setToken(token)
+                console.log(this.authService.getToken())
+              }
             },
             error: (loginError: any) => {
               console.error("login error", loginError);
