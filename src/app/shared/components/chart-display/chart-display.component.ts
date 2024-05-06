@@ -15,24 +15,13 @@ import { SidebarService } from '../../../core/services/sidebar.service';
 export class ChartDisplayComponent implements OnInit, OnDestroy {
   private userChartSubscription!:Subscription;
   //filler data until set with behavior subject
-  charts:Chart[] | null = [
-    new Chart("Bobble Sales", `
-      <body>
-        <h5>Injected HTML:</h5>
-      </body>
-  `),
-    new Chart("Bobble Futures", `
-      <body>
-        <p style="color: red;">Literally stick a whole webpage in here</p>
-      </body>
-  `),
-  ];
+  charts!:Chart[]| null;
 
   constructor(
     private chartService:ChartService,
     private sidebar:SidebarService){}
 
-  //EXPIREMNTAL NONSENSE
+  //EXPIREMENTAL NONSENSE
   // setSize(number:number){
   //     let bootstrapSize = Math.floor(Math.random() * (8 - 4 + 1)) + 4;
   //     return `col-${bootstrapSize}`
@@ -40,6 +29,7 @@ export class ChartDisplayComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
+    // Populates localcomponent charts[] to be rendered in this component's for loop
     this.userChartSubscription = this.chartService.userCharts.subscribe(charts => {
       this.charts = charts
     });

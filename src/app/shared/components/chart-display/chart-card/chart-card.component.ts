@@ -11,8 +11,8 @@ import { SidebarService } from '../../../../core/services/sidebar.service';
   styleUrl: './chart-card.component.scss'
 })
 export class ChartCardComponent implements OnInit {
-  @Input() chartFromParent: Chart | null = null;
   @Input() cardIndex!: number;
+  chartFromParent!: Chart;
   constructor(
     private chartService:ChartService,
   ){}
@@ -27,6 +27,8 @@ export class ChartCardComponent implements OnInit {
   ngOnInit(): void {
     //We are going to need some fancy code here to get this to render anything other than raw HTML
     //But it can be done.
+
+    this.chartFromParent = this.chartService.grabIndividualChart(this.cardIndex)
   }
 
   makeFullscreen(fullscreenCardIndex: number){

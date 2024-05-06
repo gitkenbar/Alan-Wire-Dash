@@ -3,7 +3,7 @@
 <div class="row gx-1 gy-4" [class.sidebar-full]="checkSidebar()">
   @for (chart of charts; track $index) {
     <div class="col chart-container">
-      <app-chart-card [chartFromParent]="chart" [cardIndex]="$index"/>
+      <app-chart-card [cardIndex]="$index"/>
     </div>
   }
 </div>
