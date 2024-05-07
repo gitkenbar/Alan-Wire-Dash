@@ -51,8 +51,6 @@ export class ChartService {
   grabIndividualChart(chartIndex: number){
    return this.myUserCharts[chartIndex]
   }
-<<<<<<< Updated upstream
-=======
 
   toggleFullscreen(){
     this.cardIsFullscreen = !this.cardIsFullscreen
@@ -61,5 +59,3 @@ export class ChartService {
   checkFullscreen(): boolean{
     return this.cardIsFullscreen
   }
->>>>>>> Stashed changes
-}
