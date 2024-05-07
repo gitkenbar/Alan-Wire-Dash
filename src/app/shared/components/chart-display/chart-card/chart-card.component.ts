@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Chart } from '../../../models/chart.model';
 import { ChartService } from '../../../../core/services/chart.service';
 import { SidebarService } from '../../../../core/services/sidebar.service';
@@ -11,8 +11,10 @@ import { SidebarService } from '../../../../core/services/sidebar.service';
   styleUrl: './chart-card.component.scss'
 })
 export class ChartCardComponent implements OnInit {
-  @Input() chartFromParent: Chart | null = null;
+  @Input() chartFromParent!: Chart;
   @Input() cardIndex!: number;
+  @Output() fullscreenChart = new EventEmitter<Chart>();
+
   constructor(
     private chartService:ChartService,
   ){}
@@ -21,16 +23,17 @@ export class ChartCardComponent implements OnInit {
     //Checks for truthy to enforce type safety
     if(chart){
     this.chartService.removeChart(chart);
+    }
   }
-}
 
   ngOnInit(): void {
     //We are going to need some fancy code here to get this to render anything other than raw HTML
     //But it can be done.
   }
 
-  makeFullscreen(fullscreenCardIndex: number){
-
+  makeFullscreen(){
+    this.chartService.toggleFullscreen()
+    this.fullscreenChart.emit(this.chartFromParent)
   }
 
 }

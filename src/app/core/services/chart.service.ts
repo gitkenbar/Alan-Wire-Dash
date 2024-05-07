@@ -10,6 +10,7 @@ export class ChartService {
 
   private myUserCharts:Chart[] = []
 
+  cardIsFullscreen: boolean = false;
 
   //BehaviorSubject holds and emits an array of charts the user has access to
   userCharts = new BehaviorSubject<Chart[] | null>(this.myUserCharts);
@@ -35,17 +36,27 @@ export class ChartService {
     return this.myUserCharts.includes(chart);
   }
 
-
   //Uses HTTP Service to retrieve array and emit through userCharts BehaviorSubject
   fetchUserCharts() {
     return true;
   }
 
+  /* DEBUG
+
   //Can be called to emit the value stored in myUserCharts
   populateUserCharts(){
     this.userCharts.next(this.myUserCharts);
+  } */
+
+  grabIndividualChart(chartIndex: number){
+   return this.myUserCharts[chartIndex]
   }
 
+  toggleFullscreen(){
+    this.cardIsFullscreen = !this.cardIsFullscreen
+  }
 
+  checkFullscreen(): boolean{
+    return this.cardIsFullscreen
+  }
 }
-
