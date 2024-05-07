@@ -5,6 +5,7 @@ import { ChartDisplayComponent } from '../../shared/components/chart-display/cha
 import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 import { SidebarService } from '../../core/services/sidebar.service';
 
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -14,7 +15,7 @@ import { SidebarService } from '../../core/services/sidebar.service';
 })
 export class DashboardComponent {
   title = ' Dashboard - Alan Wire ';
-  constructor(private sidebar:SidebarService){}
+  constructor(private sidebar:SidebarService) { }
 
   checkSidebar(): boolean{
     return this.sidebar.isSidebarVisible

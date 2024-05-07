@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SidebarService } from '../../../core/services/sidebar.service';
-
+import { AuthenticationService } from '../../../core/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -11,7 +12,7 @@ import { SidebarService } from '../../../core/services/sidebar.service';
 })
 export class NavigationComponent {
 
-  constructor(private sidebarService:SidebarService) {}
+  constructor(private sidebarService:SidebarService, private authService: AuthenticationService, private router: Router) { }
 
   isSideBarVisible(){
     return this.sidebarService.isSidebarVisible;
@@ -19,6 +20,19 @@ export class NavigationComponent {
 
   toggleSidebar(){
     this.sidebarService.toggleSidebar();
+  }
+
+  onLogout() {
+    this.authService.logout().subscribe(({
+      next: (res: any) => {
+        console.log('logout response ', res)
+        this.router.navigate(['/login']);
+        this.authService.deleteToken()
+      },
+      error: (error: any) => {
+        console.error("logout error", error)
+      }
+    }))
   }
 }
   //Remnants of outsourcing this to SideBar. Can be deleted on next merge:
