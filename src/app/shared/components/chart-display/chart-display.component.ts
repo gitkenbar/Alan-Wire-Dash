@@ -22,12 +22,6 @@ export class ChartDisplayComponent implements OnInit, OnDestroy {
     private chartService:ChartService,
     private sidebar:SidebarService){}
 
-  //EXPIREMENTAL NONSENSE
-  // setSize(number:number){
-  //     let bootstrapSize = Math.floor(Math.random() * (8 - 4 + 1)) + 4;
-  //     return `col-${bootstrapSize}`
-  // }
-
 
   ngOnInit(): void {
     // Populates localcomponent charts[] to be rendered in this component's for loop
@@ -49,6 +43,6 @@ export class ChartDisplayComponent implements OnInit, OnDestroy {
   }
 
   displayFullChart(chartData: AlanChart){
-    this.fullChart = chartData
+    this.fullChart = chartData;
   }
 }

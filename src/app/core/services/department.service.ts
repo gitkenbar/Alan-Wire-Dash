@@ -10,26 +10,65 @@ import { HttpDataService } from './http-data.service';
 })
 export class DepartmentService {
 
+  //Currently this is holding hardcoded data for the sake of engaging the app. We will populate this data with an HTTP request
+  
   // This is used to locally store the value to be emitted
   private myUserDepartments:Department[] = [
     new Department("Bobbles", [
       new AlanChart("Bobble Sales", `
-        <body>
-          <canvas id="myChart" width="400" height="400"></canvas>
-        </body>
+      {
+        "type": "line",
+        "data": {
+          "labels": ["R", "O", "Y", "G", "B", "I", "V"],
+          "datasets": [{
+            "label": "An Example Data",
+            "data": [65, 59, 80, 81, 90, 92, 96],
+            "fill": false,
+            "borderColor": "rgb(0, 255, 0)",
+            "tension": 0.1
+          }]
+        }
+      }
     `),
       new AlanChart("Bobble Futures", `
-        <body>
-          <canvas id="myChart" width="400" height="400"></canvas>
-        </body>
+      {
+        "type": "line",
+        "data": {
+          "labels": ["R", "O", "Y", "G", "B", "I", "V"],
+          "datasets": [{
+            "label": "An Example Data",
+            "data": [65, 59, 80, 81, 56, 55, 40],
+            "fill": false,
+            "borderColor": "rgb(255, 0, 0)",
+            "tension": 0.1
+          }]
+        }
+      }
     `),
     ]),
     new Department("Widgets", []),
     new Department("Wires", [
       new AlanChart("Wire Shenanigans", `
-      <body>
-        <canvas id="myChart" width="400" height="400"></canvas>
-      </body>
+      {
+        "type": "bar",
+        "data": {
+          "labels": ["January", "February", "March", "April", "May", "June", "July"],
+          "datasets": [{
+            "label": "Monthly Sales",
+            "data": [65, 59, 80, 81, 56, 55, 40],
+            "backgroundColor": "rgba(54, 162, 235, 0.2)",
+            "borderColor": "rgba(54, 162, 235, 1)",
+            "borderWidth": 1
+          }]
+        },
+        "options": {
+          "scales": {
+            "y": {
+              "beginAtZero": true
+            }
+          }
+        }
+      }
   `)]
   )];
 
