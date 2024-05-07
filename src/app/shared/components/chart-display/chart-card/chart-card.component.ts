@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Chart } from '../../../models/chart.model';
+import { AlanChart } from '../../../models/alan-chart.model';
 import { ChartService } from '../../../../core/services/chart.service';
 import { SidebarService } from '../../../../core/services/sidebar.service';
 
@@ -11,15 +11,15 @@ import { SidebarService } from '../../../../core/services/sidebar.service';
   styleUrl: './chart-card.component.scss'
 })
 export class ChartCardComponent implements OnInit {
-  @Input() chartFromParent!: Chart;
+  @Input() chartFromParent!: AlanChart;
   @Input() cardIndex!: number;
-  @Output() fullscreenChart = new EventEmitter<Chart>();
+  @Output() fullscreenChart = new EventEmitter<AlanChart>();
 
   constructor(
     private chartService:ChartService,
   ){}
 
-  removeChart(chart:Chart | null){
+  removeChart(chart:AlanChart | null){
     //Checks for truthy to enforce type safety
     if(chart){
     this.chartService.removeChart(chart);

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Department } from '../../shared/models/department.model';
-import { Chart } from '../../shared/models/chart.model';
+import { AlanChart } from '../../shared/models/alan-chart.model';
 import { HttpDataService } from './http-data.service';
 
 
@@ -13,12 +13,12 @@ export class DepartmentService {
   // This is used to locally store the value to be emitted
   private myUserDepartments:Department[] = [
     new Department("Bobbles", [
-      new Chart("Bobble Sales", `
+      new AlanChart("Bobble Sales", `
         <body>
           <canvas id="myChart" width="400" height="400"></canvas>
         </body>
     `),
-      new Chart("Bobble Futures", `
+      new AlanChart("Bobble Futures", `
         <body>
           <canvas id="myChart" width="400" height="400"></canvas>
         </body>
@@ -26,7 +26,7 @@ export class DepartmentService {
     ]),
     new Department("Widgets", []),
     new Department("Wires", [
-      new Chart("Wire Shenanigans", `
+      new AlanChart("Wire Shenanigans", `
       <body>
         <canvas id="myChart" width="400" height="400"></canvas>
       </body>
