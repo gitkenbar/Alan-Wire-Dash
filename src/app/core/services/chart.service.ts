@@ -48,10 +48,6 @@ export class ChartService {
     this.userCharts.next(this.myUserCharts);
   } */
 
-  grabIndividualChart(chartIndex: number){
-   return this.myUserCharts[chartIndex]
-  }
-
   toggleFullscreen(){
     this.cardIsFullscreen = !this.cardIsFullscreen
   }

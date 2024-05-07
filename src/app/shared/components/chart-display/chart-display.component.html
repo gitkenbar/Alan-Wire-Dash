@@ -1,6 +1,6 @@
 <!-- The Media Queries Here need some work -->
 <!-- Made small change, looks better, needs additional testing - Ken -->
-<div class="row gx-1 gy-4" [class.sidebar-full]="checkSidebar()">
+<div class="row gx-1 gy-4">
   @if(!isFullscreen()){
   @for (chart of charts; track $index) {
     <div class="col chart-container">

@@ -1,12 +1,19 @@
 <nav class="navcontainer" [class.active]="isSideBarVisible()">
     <div class="nav-links">
       <div class="menu-container" [class.active]="isSideBarVisible()">
-        @if(isSideBarVisible()){
+        <!-- @if(isSideBarVisible()){
         <button class="menu" (click)="toggleSidebar()">⊲</button>
         }
         @if(!isSideBarVisible()){
         <button class="menu" (click)="toggleSidebar()">⊳</button>
+        } -->
+        @if(isSideBarVisible()){
+        <img src="../../../../assets/svg/keyboard_double_arrow_left.svg" class="menu" (click)="toggleSidebar()"/>
         }
+        @if(!isSideBarVisible()){
+        <img src="../../../../assets/svg/keyboard_double_arrow_right.svg"  class="menu" (click)="toggleSidebar()"/>
+        }
+      <!-- <img src="../../../../assets/svg/compare_arrows.svg"  class="menu" (click)="toggleSidebar()"/> -->
       </div>
     </div>
   <div class="top-right">
@@ -16,7 +23,7 @@
       </a>
 
       <a class="notification-bell">
-        <img src="../../../assets/svg/notification-bell.svg" alt="notification">
+        <img src="../../../assets/svg/notifications.svg" alt="notification">
       </a>
 
       <button class="pfp" routerLink="profile">
