@@ -4,11 +4,7 @@
   @if(!isFullscreen()){
   @for (chart of charts; track $index) {
     <div class="col chart-container">
-<<<<<<< Updated upstream
-      <app-chart-card [cardIndex]="$index"/>
-=======
       <app-chart-card [chartFromParent]="chart" [cardIndex]="$index" (fullscreenChart)="displayFullChart($event)"/>
->>>>>>> Stashed changes
     </div>
   }
   } @else {
