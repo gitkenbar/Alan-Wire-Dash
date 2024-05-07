@@ -55,6 +55,4 @@ export class DepartmentService {
   populateUserDepartments(){
     this.userDepartments.next(this.myUserDepartments);
   }
-
-
 }

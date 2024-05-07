@@ -9,6 +9,10 @@ import { Chart } from '../../shared/models/chart.model';
 export class ChartService {
 
   private myUserCharts:Chart[] = []
+<<<<<<< Updated upstream
+=======
+  cardIsFullscreen: boolean = false;
+>>>>>>> Stashed changes
 
   //BehaviorSubject holds and emits an array of charts the user has access to
   userCharts = new BehaviorSubject<Chart[] | null>(this.myUserCharts);
@@ -49,4 +53,15 @@ export class ChartService {
   grabIndividualChart(chartIndex: number){
    return this.myUserCharts[chartIndex]
   }
+<<<<<<< Updated upstream
+=======
+
+  toggleFullscreen(){
+    this.cardIsFullscreen = !this.cardIsFullscreen
+  }
+
+  checkFullscreen(): boolean{
+    return this.cardIsFullscreen
+  }
+>>>>>>> Stashed changes
 }
