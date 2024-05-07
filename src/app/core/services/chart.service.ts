@@ -59,3 +59,4 @@ export class ChartService {
   checkFullscreen(): boolean{
     return this.cardIsFullscreen
   }
+}

@@ -29,8 +29,6 @@ export class ChartCardComponent implements OnInit {
   ngOnInit(): void {
     //We are going to need some fancy code here to get this to render anything other than raw HTML
     //But it can be done.
-
-    this.chartFromParent = this.chartService.grabIndividualChart(this.cardIndex)
   }
 
   makeFullscreen(){
