@@ -11,14 +11,10 @@ import { SidebarService } from '../../../../core/services/sidebar.service';
   styleUrl: './chart-card.component.scss'
 })
 export class ChartCardComponent implements OnInit {
-<<<<<<< Updated upstream
-  @Input() cardIndex!: number;
-  chartFromParent!: Chart;
-=======
   @Input() chartFromParent!: Chart;
   @Input() cardIndex!: number;
   @Output() fullscreenChart = new EventEmitter<Chart>();
->>>>>>> Stashed changes
+
   constructor(
     private chartService:ChartService,
   ){}
