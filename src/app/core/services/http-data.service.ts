@@ -30,6 +30,12 @@ export class HttpDataService {
     )
   }
 
+  getMetalPrices(): Observable<any>{
+    return this.http.get(`${environment.metalApiUrl}?api_key=${environment.metalApiKey}`).pipe(
+      catchError(this.handleError)
+    )
+  }
+
 
 
   // ADMIN ONLY
