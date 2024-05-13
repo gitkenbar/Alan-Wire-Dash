@@ -4,6 +4,7 @@
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 /* ## VARIABLES ## */
@@ -36,5 +37,4 @@
 
 body {
   color: var(--NIGHT);
-  background-color: var(--ALUMINUM-DARK);
 }
