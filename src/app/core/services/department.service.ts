@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
 import { Department } from '../../shared/models/department.model';
 import { AlanChart } from '../../shared/models/alan-chart.model';
 import { HttpDataService } from './http-data.service';
@@ -10,9 +10,7 @@ import { HttpDataService } from './http-data.service';
 })
 export class DepartmentService {
 
-  //Currently this is holding hardcoded data for the sake of engaging the app. We will populate this data with an HTTP request
-
-  // This is used to locally store the value to be emitted
+  //The following two variables only exist for debug. They are relevant when the backend is not running. Eventually they can be safely deleted.
   private myUserDepartments:Department[] = [
     new Department("Bobbles", [
       new AlanChart("Bobble Sales", `
@@ -70,28 +68,28 @@ export class DepartmentService {
         }
       }
   `)]
-  )];
+  )
+  ];
+  userDepartments = <Department[] | null> (this.myUserDepartments);
 
-  //BehaviorSubject holds and emits an array of departments the user has access to
-  userDepartments = new BehaviorSubject<Department[] | null>(this.myUserDepartments);
-
-  constructor(private httpService:HttpDataService) { }
+  constructor(private httpService:HttpDataService) {  }
 
   //Uses HTTP Service to retrieve array and emit through userDepartments BehaviorSubject
-  fetchUserDepartments(id:number) {
-    this.httpService.getUserDepartments(id).subscribe({
-      next: (data:any) => {
-        this.userDepartments.next(data);
-      },
-      error: (error:any) => {
+  fetchAllDepartments() : Observable<Department[]>{
+    return this.httpService.getAllDepartments().pipe(
+      map((responseData) => {
+        const departments: Department[] = responseData.data.departments.map((departmentData:any) => {
+          return new Department(
+            departmentData.department_name,
+            []
+          );
+        });
+        return departments;
+      }),
+      catchError((error) => {
         console.error('Error fetching departments', error);
-      }
-    })
-    return true;
-  }
-
-  //Can be called to emit the value stored in myUserDepartments
-  populateUserDepartments(){
-    this.userDepartments.next(this.myUserDepartments);
+        return throwError(() => error);
+      })
+    );
   }
 }

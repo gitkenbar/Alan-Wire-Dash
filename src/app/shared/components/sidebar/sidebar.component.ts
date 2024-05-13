@@ -15,7 +15,7 @@ import { SidebarService } from '../../../core/services/sidebar.service';
 })
 export class SidebarComponent implements OnInit, OnDestroy{
   displayingCharts:string | null = null;
-  menuDepartments:Department[] | null = [];
+  menuDepartments:Department[] | null = null;
   private userDepartmentSubscription!: Subscription;
 
   constructor(
@@ -25,13 +25,22 @@ export class SidebarComponent implements OnInit, OnDestroy{
   ) {}
 
   ngOnInit(): void {
-    this.userDepartmentSubscription = this.departmentService.userDepartments.subscribe(departments => {
-      this.menuDepartments = departments;
-    });
+    this.userDepartmentSubscription = this.departmentService.fetchAllDepartments().subscribe({
+      next: (departments: Department[]) => {
+        this.menuDepartments = departments;
+      },
+      error: (error) => {
+        //In the event that the server fails (or is not running) it populates menu with the debug values
+        this.menuDepartments = this.departmentService.userDepartments;
+        console.error('Error fetching departments', error);
+      }
+  });
   }
 
   ngOnDestroy(): void {
-    this.userDepartmentSubscription.unsubscribe();
+    if (this.userDepartmentSubscription) {
+      this.userDepartmentSubscription.unsubscribe();
+    }
   }
 
   // This method will toggle the display of charts within a given department in the sidebar
