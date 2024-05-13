@@ -1,11 +1,33 @@
-<div class="container" [id]="cardIndex">
+@if (isFullscreen()) {
+  <div class="container">
+    <div class="row">
+      <div>
+        <div class="card">
+          <div class="card-body">
+            <canvas id="ctx" width="200" height="200" style="border: 1px solid #000; background-color: darkorchid;" ></canvas>
+            <h5 class="card-title">{{chartFromParent.chart_title}}</h5>
+            <div class="d-flex justify-content-between">
+              <img src="../../../../../assets/svg/open_in_full.svg" alt="FullScreen" (click)="makeFullscreen()" class="fullIcon">
+              <img src="../../../../../assets/svg/close.svg" alt="Remove" (click)="removeChart(chartFromParent)" class="removeIcon">
+              <!-- <button class="btn btn-primary" (click)="makeFullscreen()">Fullscreen</button>
+              <button type="button" class="btn btn-danger" (click)="removeChart(chartFromParent)">Remove</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- You can add more card elements here -->
+
+    </div>
+  </div>
+} @else {
+<div class="container">
   <div class="row">
     <div>
       <div class="card">
         <div class="card-body">
-          <div [innerHTML]="chartFromParent?.chart_data"></div>
-          <canvas id="myChart" width="200" height="200" style="border: 1px solid #000;"></canvas>
-          <h5 class="card-title">{{chartFromParent?.chart_title}}</h5>
+          <canvas id="ctx{{cardIndex}}" width="200" height="200" style="border: 1px solid #000; background-color: darkorchid;" ></canvas>
+          <h5 class="card-title">{{chartFromParent.chart_title}}</h5>
           <div class="d-flex justify-content-between">
             <img src="../../../../../assets/svg/open_in_full.svg" alt="FullScreen" (click)="makeFullscreen()" class="fullIcon">
             <img src="../../../../../assets/svg/close.svg" alt="Remove" (click)="removeChart(chartFromParent)" class="removeIcon">
@@ -20,3 +42,4 @@
 
   </div>
 </div>
+}
