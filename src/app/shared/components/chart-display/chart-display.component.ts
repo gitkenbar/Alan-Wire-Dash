@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, Output } from '@angular/core';
 import { ChartCardComponent } from './chart-card/chart-card.component';
-import { Chart } from '../../models/chart.model';
+import { AlanChart } from '../../models/alan-chart.model';
 import { ChartService } from '../../../core/services/chart.service';
 import { Subscription } from 'rxjs';
 import { SidebarService } from '../../../core/services/sidebar.service';
@@ -13,20 +13,14 @@ import { SidebarService } from '../../../core/services/sidebar.service';
   styleUrl: './chart-display.component.scss'
 })
 export class ChartDisplayComponent implements OnInit, OnDestroy {
-  fullChart!: Chart;
+  fullChart!: AlanChart;
   private userChartSubscription!:Subscription;
   //filler data until set with behavior subject
-  charts!:Chart[]| null;
+  charts!:AlanChart[]| null;
 
   constructor(
     private chartService:ChartService,
     private sidebar:SidebarService){}
-
-  //EXPIREMENTAL NONSENSE
-  // setSize(number:number){
-  //     let bootstrapSize = Math.floor(Math.random() * (8 - 4 + 1)) + 4;
-  //     return `col-${bootstrapSize}`
-  // }
 
 
   ngOnInit(): void {
@@ -48,7 +42,7 @@ export class ChartDisplayComponent implements OnInit, OnDestroy {
     return this.chartService.checkFullscreen()
   }
 
-  displayFullChart(chartData: Chart){
-    this.fullChart = chartData
+  displayFullChart(chartData: AlanChart){
+    this.fullChart = chartData;
   }
 }
