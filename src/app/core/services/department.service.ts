@@ -11,7 +11,7 @@ import { HttpDataService } from './http-data.service';
 export class DepartmentService {
 
   //Currently this is holding hardcoded data for the sake of engaging the app. We will populate this data with an HTTP request
-  
+
   // This is used to locally store the value to be emitted
   private myUserDepartments:Department[] = [
     new Department("Bobbles", [
@@ -37,7 +37,7 @@ export class DepartmentService {
           "labels": ["R", "O", "Y", "G", "B", "I", "V"],
           "datasets": [{
             "label": "An Example Data",
-            "data": [65, 59, 80, 81, 56, 55, 40],
+            "data": [12, 35, 75, 81, 55, 67, 99],
             "fill": false,
             "borderColor": "rgb(255, 0, 0)",
             "tension": 0.1
@@ -56,8 +56,8 @@ export class DepartmentService {
           "datasets": [{
             "label": "Monthly Sales",
             "data": [65, 59, 80, 81, 56, 55, 40],
-            "backgroundColor": "rgba(54, 162, 235, 0.2)",
-            "borderColor": "rgba(54, 162, 235, 1)",
+            "backgroundColor": "#d0d0d0",
+            "borderColor": "#d0d0d0",
             "borderWidth": 1
           }]
         },
