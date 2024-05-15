@@ -31,7 +31,7 @@ export class HttpDataService {
   }
 
   getMetalPrices(): Observable<any>{
-    return this.http.get(`${environment.metalApiUrl}?api_key=${environment.metalApiKey}`).pipe(
+    return this.http.get(`${environment.metalApiUrl}?api_key=${environment.metalApiKey}&metal=copper&currency=USD&unit=g`).pipe(
       catchError(this.handleError)
     )
   }

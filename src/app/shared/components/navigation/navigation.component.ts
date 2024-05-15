@@ -2,11 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SidebarService } from '../../../core/services/sidebar.service';
 import { AuthenticationService } from '../../../core/services/authentication.service';
 import { Router } from '@angular/router';
+import { MetalPriceComponent } from '../metal-price/metal-price.component';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [],
+  imports: [MetalPriceComponent],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss'
 })

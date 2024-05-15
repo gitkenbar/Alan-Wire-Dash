@@ -4,6 +4,7 @@ import { NavigationComponent } from '../../shared/components/navigation/navigati
 import { ChartDisplayComponent } from '../../shared/components/chart-display/chart-display.component';
 import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 import { SidebarService } from '../../core/services/sidebar.service';
+import { MetalPriceComponent } from '../../shared/components/metal-price/metal-price.component';
 
 
 @Component({
