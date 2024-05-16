@@ -41,7 +41,7 @@ export class HttpDataService {
       "unit": "mt",
       "metal": "copper",
       "rate": {
-        "price": 3.50,
+        "price": 10726.5049,
         "ask": 10727.7024,
         "bid": 10721.7059,
         "high": 10966.5955,

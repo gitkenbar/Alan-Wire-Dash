@@ -1,9 +1,0 @@
-<div *ngIf="metalPrice" class="widget-container">
-  <h3 class="widget-header">{{ metalPrice.metal }}</h3>
-  <div class="widget-content">
-    <p class="widget-price">Price: {{ metalPrice.rate.price | currency:'USD' }}</p>
-    <p class="widget-change" [ngClass]="{'positive': metalPrice.rate.change_percent > 0, 'negative': metalPrice.rate.change_percent < 0}">
-      Change: {{ metalPrice.rate.change_percent }}%
-    </p>
-  </div>
-</div>
