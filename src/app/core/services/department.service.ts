@@ -39,7 +39,7 @@ export class DepartmentService {
             "label": "An Example Data",
             "data": [12, 35, 75, 81, 55, 67, 99],
             "fill": false,
-            "borderColor": "rgb(255, 0, 0)",
+            "borderColor": "green",
             "tension": 0.1
           }]
         }
@@ -56,8 +56,8 @@ export class DepartmentService {
           "datasets": [{
             "label": "Monthly Sales",
             "data": [65, 59, 80, 81, 56, 55, 40],
-            "backgroundColor": "#d0d0d0",
-            "borderColor": "#d0d0d0",
+            "backgroundColor": "red",
+            "borderColor": "red",
             "borderWidth": 1
           }]
         },

@@ -1,9 +1,9 @@
 <!-- The Media Queries Here need some work -->
 <!-- Made small change, looks better, needs additional testing - Ken -->
-<div class="row gx-1 gy-4">
+<div class="grid-columns">
   @if(!isFullscreen()){
   @for (chart of charts; track $index) {
-    <div class="col chart-container">
+    <div>
       <app-chart-card [chartFromParent]="chart" [cardIndex]="$index" (fullscreenChart)="displayFullChart($event)"/>
     </div>
   }

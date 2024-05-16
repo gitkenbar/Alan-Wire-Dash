@@ -7,8 +7,7 @@
   <div class="sidebar" [class.sidebar-full]="isSideBarVisible()">
     @for(department of menuDepartments; track department){
       <a (click)="displayCharts(department.department_name)">
-        <img src="../../../assets/svg/production.svg" alt=`{{department.department_name}}` >
-        @if(isSideBarVisible()){<span class="sidebar-text">{{department.department_name}}</span>}
+        <span class="sidebar-text" [class.expanded]="isSideBarVisible()">{{department.department_name}}</span>
       </a>
 
       @if(displayingCharts == department.department_name) {
