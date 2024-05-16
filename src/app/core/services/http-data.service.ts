@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Department } from '../../shared/models/department.model';
 import { Observable, catchError, throwError } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { AlanChart } from '../../shared/models/alan-chart.model';
 
 @Injectable({
@@ -39,10 +39,14 @@ export class HttpDataService {
 
 
   // ADMIN ONLY
-  getAllDepartments() {
-    return this.http.get<Department[]>(`${environment.apiUrl}/departments`).pipe(
+
+  // WORKING HERE
+  getAllDepartments(): Observable<any> {
+    let res = this.http.get<any>(`${environment.apiUrl}/departments`)
+    .pipe(
       catchError(this.handleError)
-    )
+    );
+    return res;
   }
 
   addUserDepartments(id:number, data:any) {
