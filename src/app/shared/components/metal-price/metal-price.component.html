@@ -3,7 +3,7 @@
   <div class="widget-content">
     <p class="widget-price">Price: {{ metalPrice.rate.price | currency:'USD' }}</p>
     <p class="widget-change" [ngClass]="{'positive': metalPrice.rate.change_percent > 0, 'negative': metalPrice.rate.change_percent < 0}">
-      Change: {{ metalPrice.rate.change_percent }}%
+      <strong>Change: {{ metalPrice.rate.change_percent }}%</strong>
     </p>
   </div>
 </div>
