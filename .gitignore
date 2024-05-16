@@ -43,4 +43,4 @@ Thumbs.db
 .nx/cache/19.0.0-nx.win32-x64-msvc.node
 
 
-/environments
+environments/
