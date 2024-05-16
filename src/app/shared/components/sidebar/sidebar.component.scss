@@ -15,6 +15,7 @@
   position: fixed;
   width: 5rem;
 }
+
 .sidebar-container.sidebar-full {
   width: 13rem;
 }
@@ -22,12 +23,12 @@
 .sidebar{
   width: 95%;
   background-color: var(--UMBRA);
-  border-left: 2px solid var(--ALANWIRE-BLUE-DARK);
-  transition: width 0.3s ease;
+  border-right: 2px solid var(--ALANWIRE-BLUE-DARK);
+  transition: width 0.4s ease;
 }
 
 .sidebar.sidebar-full{
-  transition: left 0.3s ease;
+  transition: left 0.4s ease;
 }
 
 .sidebar a{
@@ -41,31 +42,28 @@
 }
 
 .sidebar a:hover{
-  font-size: 1.06rem;
-  transition: 0.2s ease;
-  font-weight:bold;
-  color: var(--UMBRA);
-  background-color: var(--LIGHT-BLUE);
+  transition: 0.3s ease;
+  font-weight:600;
 }
 
 
 .sidebar-text {
-  opacity: 0;
-  transition: opacity 0.3s;
+  transition: font-size 0.2s;
 }
 
 
 .chart-item a{
-  font-size: 0.75em;
-  background-color: var(--ALUMINUM-LIGHT);
+  background-color: whitesmoke;
   color: var(--UMBRA);
 }
 
-.chart-item a:hover{
-  background-color: var(--COPPER);
-}
 
 .chart-item-added a{
-  background-color: var(--NEXT-STEP-GREEN);
+  color: whitesmoke;
+  background-color: var(--ALANWIRE-BLUE-LIGHT);
+  filter: brightness(140%);
+}
 
+.check-display {
+  display:none
 }

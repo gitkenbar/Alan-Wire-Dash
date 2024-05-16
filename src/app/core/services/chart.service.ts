@@ -17,11 +17,13 @@ export class ChartService {
 
   constructor() { }
 
-  addChart(chart:AlanChart){
+  toggleChart(chart:AlanChart){
     //if block prevents redundant chart addition
     if (!this.checkChartPresence(chart)){
       this.myUserCharts.push(chart);
-    };
+    } else {
+      let remove = this.myUserCharts.indexOf(chart)
+      this.myUserCharts.splice(remove, 1)};
   }
 
   removeChart(chart: AlanChart) {

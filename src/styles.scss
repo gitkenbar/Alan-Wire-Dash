@@ -7,21 +7,23 @@
   box-sizing: border-box;
 }
 
+
+/* ## GLOBAL STYLES */
+
+body {
+  color: var(--NIGHT);
+  background: whitesmoke
+}
+
+
 /* ## VARIABLES ## */
 
 :root {
   /* COLORS */
   --UMBRA: #011828;
-  --PEN-UMBRA: #1f1f23;
-  --DARK-GREY: #515151;
-  --LIGHT-BLUE: #1ba3dd;
   --ALANWIRE-BLUE-LIGHT: #005596;
   --ALANWIRE-BLUE-DARK: #15446e;
-
-  /* NEXT-STEP */
-  --NEXT-STEP-DARK-GREY: #20303f;
   --NEXT-STEP-GREEN: #278235;
-  --NEXT-STEP-LIGHT-GREEN: #8bbb36;
 
   /* METALS */
   --COPPER: #B87333;
@@ -31,10 +33,4 @@
   /* WIRE COATING */
   --LIVE-RED: #eb4c42;
   --GROUND-GREEN: #007100;
-}
-
-/* ## GLOBAL STYLES */
-
-body {
-  color: var(--NIGHT);
 }

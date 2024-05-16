@@ -7,28 +7,18 @@
   <div class="sidebar" [class.sidebar-full]="isSideBarVisible()">
     @for(department of menuDepartments; track department){
       <a (click)="displayCharts(department.department_name)">
-        <img src="../../../assets/svg/production.svg" alt=`{{department.department_name}}` >
-        @if(isSideBarVisible()){<span class="sidebar-text">{{department.department_name}}</span>}
+        <span class="sidebar-text" [class.expanded]="isSideBarVisible()">{{department.department_name}}</span>
       </a>
 
       @if(displayingCharts == department.department_name) {
-      @for(chart of department.chart_array; track chart){
-        @if(!checkChartStatus(chart) && isSideBarVisible()) {
-          <div class="chart-item">
-              <a (click)="addChart(chart)">
-                <span>{{chart.chart_title}}</span>
-              </a>
-          </div>
-        }
-        @if (checkChartStatus(chart) && isSideBarVisible()){
-        <div class="chart-item-added">
-          <a (click)="addChart(chart)">
-            <span>✓ {{chart.chart_title}}</span>
-          </a>
-        </div>
-        }
-      }}
-    }
+        @for(chart of department.chart_array; track chart){
+            <div class="chart-item" [class.chart-item-added]="checkChartStatus(chart)">
+                <a (click)="toggleChart(chart)">
+                  <span style="margin-right: 3px" [class.check-display]="!checkChartStatus(chart)"> ✓ </span><span>{{chart.chart_title}}</span>
+                </a>
+            </div>
+          }
+      }  }
 </div>
 </div>
 
