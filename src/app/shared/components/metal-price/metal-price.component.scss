@@ -1,0 +1,40 @@
+.widget-container {
+  border: 1px solid #005596;
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 300px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.widget-header {
+  margin: 0;
+  padding: 8px 0;
+  text-align: center;
+  color: #005596;
+  font-size: 1.5em;
+  border-bottom: 1px solid #005596;
+}
+
+.widget-content {
+  padding: 16px 0;
+}
+
+.widget-price {
+  font-size: 1.2em;
+  color: #333333;
+  margin: 8px 0;
+}
+
+.widget-change {
+  font-size: 1em;
+  margin: 8px 0;
+}
+
+.widget-change.positive {
+  color: #28a745;
+}
+
+.widget-change.negative {
+  color: #dc3545;
+}
