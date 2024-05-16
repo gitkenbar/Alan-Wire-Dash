@@ -3,9 +3,8 @@
 <div class="grid-columns">
   @if(!isFullscreen()){
   @for (chart of charts; track $index) {
-    <div>
-      <app-chart-card [chartFromParent]="chart" [cardIndex]="$index" (fullscreenChart)="displayFullChart($event)"/>
-    </div>
+
+  <app-chart-card [chartFromParent]="chart" [cardIndex]="$index" (fullscreenChart)="displayFullChart($event)"/>
   }
   } @else {
     <app-chart-card [chartFromParent]="fullChart"/>

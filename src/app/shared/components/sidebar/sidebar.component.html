@@ -11,23 +11,14 @@
       </a>
 
       @if(displayingCharts == department.department_name) {
-      @for(chart of department.chart_array; track chart){
-        @if(!checkChartStatus(chart) && isSideBarVisible()) {
-          <div class="chart-item">
-              <a (click)="addChart(chart)">
-                <span>{{chart.chart_title}}</span>
-              </a>
-          </div>
-        }
-        @if (checkChartStatus(chart) && isSideBarVisible()){
-        <div class="chart-item-added">
-          <a (click)="addChart(chart)">
-            <span>✓ {{chart.chart_title}}</span>
-          </a>
-        </div>
-        }
-      }}
-    }
+        @for(chart of department.chart_array; track chart){
+            <div class="chart-item" [class.chart-item-added]="checkChartStatus(chart)">
+                <a (click)="toggleChart(chart)">
+                  <span style="margin-right: 3px" [class.check-display]="!checkChartStatus(chart)"> ✓ </span><span>{{chart.chart_title}}</span>
+                </a>
+            </div>
+          }
+      }  }
 </div>
 </div>
 

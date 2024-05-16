@@ -15,6 +15,7 @@
   position: fixed;
   width: 5rem;
 }
+
 .sidebar-container.sidebar-full {
   width: 13rem;
 }
@@ -56,12 +57,13 @@
   color: var(--UMBRA);
 }
 
-.chart-item a:hover{
-  background-color: var(--ALUMINUM-LIGHT);
-}
 
 .chart-item-added a{
   color: whitesmoke;
   background-color: var(--ALANWIRE-BLUE-LIGHT);
   filter: brightness(140%);
+}
+
+.check-display {
+  display:none
 }

@@ -1,5 +1,4 @@
-<div class="container">
-  <div>
+
       @if (isFullscreen()) {
         <!-- Full Screen -->
           <div class="card">
@@ -15,6 +14,7 @@
           </div>
       } @else {
         <!--  Dashboard -->
+
           <div class="card" (click)="makeFullscreen()" >
             <h5 class="card-title">{{chartFromParent.chart_title}}</h5>
             <div class="card-body"  >
@@ -28,6 +28,5 @@
             <button type="button" class="btn btn-danger" (click)="removeChart(chartFromParent)">Remove</button> -->
             <!-- You can add more card elements here -->
           </div>
+
         }
-  </div>
-</div>

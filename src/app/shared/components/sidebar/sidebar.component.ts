@@ -52,7 +52,7 @@ export class SidebarComponent implements OnInit, OnDestroy{
 
   //Adds the selected chart
   addChart(chart:AlanChart) {
-    this.chartService.addChart(chart);
+    this.chartService.toggleChart(chart);
   }
 
   checkChartStatus(chart:AlanChart){
@@ -68,4 +68,7 @@ export class SidebarComponent implements OnInit, OnDestroy{
     this.sidebarService.toggleSidebar();
   }
 
+  toggleChart(chart:AlanChart){
+    this.chartService.toggleChart(chart);
+  }
 }
