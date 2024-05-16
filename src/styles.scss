@@ -4,6 +4,7 @@
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 /* ## VARIABLES ## */
@@ -19,7 +20,6 @@
 
   /* NEXT-STEP */
   --NEXT-STEP-DARK-GREY: #20303f;
-  --NEXT-STEP-BLUE: #15446e;
   --NEXT-STEP-GREEN: #278235;
   --NEXT-STEP-LIGHT-GREEN: #8bbb36;
 
@@ -37,5 +37,4 @@
 
 body {
   color: var(--NIGHT);
-  background-color: var(--ALUMINUM-DARK);
 }

@@ -1,50 +1,95 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
 import { Department } from '../../shared/models/department.model';
-import { Chart } from '../../shared/models/chart.model';
+import { AlanChart } from '../../shared/models/alan-chart.model';
+import { HttpDataService } from './http-data.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DepartmentService {
 
-  // This is used to locally store the value to be emitted
+  //The following two variables only exist for debug. They are relevant when the backend is not running. Eventually they can be safely deleted.
   private myUserDepartments:Department[] = [
     new Department("Bobbles", [
-      new Chart("Bobble Sales", `
-        <body>
-          <canvas id="myChart" width="400" height="400"></canvas>
-        </body>
+      new AlanChart("Bobble Sales", `
+      {
+        "type": "line",
+        "data": {
+          "labels": ["R", "O", "Y", "G", "B", "I", "V"],
+          "datasets": [{
+            "label": "An Example Data",
+            "data": [65, 59, 80, 81, 90, 92, 96],
+            "fill": false,
+            "borderColor": "rgb(0, 255, 0)",
+            "tension": 0.1
+          }]
+        }
+      }
     `),
-      new Chart("Bobble Futures", `
-        <body>
-          <canvas id="myChart" width="400" height="400"></canvas>
-        </body>
+      new AlanChart("Bobble Futures", `
+      {
+        "type": "line",
+        "data": {
+          "labels": ["R", "O", "Y", "G", "B", "I", "V"],
+          "datasets": [{
+            "label": "An Example Data",
+            "data": [12, 35, 75, 81, 55, 67, 99],
+            "fill": false,
+            "borderColor": "rgb(255, 0, 0)",
+            "tension": 0.1
+          }]
+        }
+      }
     `),
     ]),
     new Department("Widgets", []),
     new Department("Wires", [
-      new Chart("Wire Shenanigans", `
-      <body>
-        <canvas id="myChart" width="400" height="400"></canvas>
-      </body>
+      new AlanChart("Wire Shenanigans", `
+      {
+        "type": "bar",
+        "data": {
+          "labels": ["January", "February", "March", "April", "May", "June", "July"],
+          "datasets": [{
+            "label": "Monthly Sales",
+            "data": [65, 59, 80, 81, 56, 55, 40],
+            "backgroundColor": "#d0d0d0",
+            "borderColor": "#d0d0d0",
+            "borderWidth": 1
+          }]
+        },
+        "options": {
+          "scales": {
+            "y": {
+              "beginAtZero": true
+            }
+          }
+        }
+      }
   `)]
-  )];
+  )
+  ];
+  userDepartments = <Department[] | null> (this.myUserDepartments);
 
-  //BehaviorSubject holds and emits an array of departments the user has access to
-  userDepartments = new BehaviorSubject<Department[] | null>(this.myUserDepartments);
-
-  constructor() { }
+  constructor(private httpService:HttpDataService) {  }
 
   //Uses HTTP Service to retrieve array and emit through userDepartments BehaviorSubject
-  fetchUserDepartments() {
-    return true;
+  fetchAllDepartments() : Observable<Department[]>{
+    return this.httpService.getAllDepartments().pipe(
+      map((responseData) => {
+        const departments: Department[] = responseData.data.departments.map((departmentData:any) => {
+          return new Department(
+            departmentData.department_name,
+            []
+          );
+        });
+        return departments;
+      }),
+      catchError((error) => {
+        console.error('Error fetching departments', error);
+        return throwError(() => error);
+      })
+    );
   }
-
-  //Can be called to emit the value stored in myUserDepartments
-  populateUserDepartments(){
-    this.userDepartments.next(this.myUserDepartments);
-  }
-
-
 }

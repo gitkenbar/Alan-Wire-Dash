@@ -1,0 +1,37 @@
+.card{
+}
+
+.fullIcon{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.removeIcon{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+canvas{
+  border: 1px solid #000;
+}
+
+h5{
+  display: flex;
+}
+
+.card-title{
+  justify-content: center;
+}
+
+.canvas-container{
+  align-self:auto;
+  position: relative;
+  margin: auto;
+  height: 75vh;
+}
+
+.card-body{
+  justify-content: center;
+}

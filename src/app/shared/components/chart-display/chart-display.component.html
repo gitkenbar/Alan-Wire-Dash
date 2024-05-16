@@ -1,14 +1,13 @@
-<div class="row gx-1 gy-4 ">
-  <div class="col-6">
-    <app-chart-card/>
-  </div>
-  <div class="col-4">
-    <app-chart-card/>
-  </div>
-  <div class="col-2">
-    <app-chart-card/>
-  </div>
-  <div class="col-4">
-    <app-chart-card/>
-  </div>
+<!-- The Media Queries Here need some work -->
+<!-- Made small change, looks better, needs additional testing - Ken -->
+<div class="row gx-1 gy-4">
+  @if(!isFullscreen()){
+  @for (chart of charts; track $index) {
+    <div class="col chart-container">
+      <app-chart-card [chartFromParent]="chart" [cardIndex]="$index" (fullscreenChart)="displayFullChart($event)"/>
+    </div>
+  }
+  } @else {
+    <app-chart-card [chartFromParent]="fullChart"/>
+  }
 </div>

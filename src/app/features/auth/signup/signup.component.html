@@ -11,7 +11,13 @@
         <img src="../../../../assets/png/ReelTime01.png" class="image-fluid">
       </div>
       <div class="bg-white rounded p4 shadow">
-        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+          <div class="m-3">
+            <div class="form-group text-center">
+              <label for="username" class="form-label">Username</label>
+              <input type="username" class="form-control" formControlName="username" id="username" aria-describedby="usernameHelp">
+            </div>
+          </div>
           <div class="m-3">
             <div class="form-group text-center">
               <label for="email" class="form-label">Email</label>
@@ -26,14 +32,14 @@
             </div>
           </div>
           <div class="col text-center">
-            <button type="submit" class="btn btn-outline-primary m3">Login</button>
+            <button type="submit" class="btn btn-outline-primary m3">Signup</button>
           </div>
           @if(isError){
             <div class="alert alert-danger" role="alert">
-              Login Credentials Failed. Please try again.
+              Signup Failed. Please try again.
             </div>
           }
-          <p class="text-center m3">Don't have an account? <a routerLink="/signup" routerLinkActive="active" class="text-decoration-none">Register</a></p>
+          <p class="text-center m3">Already have an accout? <a routerLink="/login" routerLinkActive="active" class="text-decoration-none">Login</a></p>
         </form>
       </div>
       <div class="text-center">
@@ -42,3 +48,4 @@
     </div>
   </div>
 </div>
+

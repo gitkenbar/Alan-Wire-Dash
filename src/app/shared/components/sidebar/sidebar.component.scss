@@ -1,10 +1,9 @@
 .corporate-logo {
   width: 100%;
   display: flex;
-  padding: 1vh 3vh;
+  padding: 1vh 2.77rem;
   font-size: 1.5rem;
   justify-content: center;
-  align-items: center;
   font-weight: bold;
   color: var(--COPPER);
   background-color: var(--ALUMINUM-LIGHT);
@@ -12,12 +11,11 @@
   transition: width 0.3s ease;
 }
 
-
 .sidebar-container{
   position: fixed;
   width: 5rem;
 }
-.sidebar-container.active {
+.sidebar-container.sidebar-full {
   width: 13rem;
 }
 
@@ -28,14 +26,13 @@
   transition: width 0.3s ease;
 }
 
-.sidebar.active{
+.sidebar.sidebar-full{
   transition: left 0.3s ease;
 }
 
 .sidebar a{
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 10px;
   border-bottom: 1px solid var(--UMBRA);
   color: var(--ALUMINUM-LIGHT);
@@ -58,3 +55,17 @@
 }
 
 
+.chart-item a{
+  font-size: 0.75em;
+  background-color: var(--ALUMINUM-LIGHT);
+  color: var(--UMBRA);
+}
+
+.chart-item a:hover{
+  background-color: var(--COPPER);
+}
+
+.chart-item-added a{
+  background-color: var(--NEXT-STEP-GREEN);
+
+}
