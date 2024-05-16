@@ -44,3 +44,4 @@ Thumbs.db
 #API Key
 src/environments/environment.development.ts
 .nx/cache/19.0.0-nx.win32-x64-msvc.node
+src/environments/
