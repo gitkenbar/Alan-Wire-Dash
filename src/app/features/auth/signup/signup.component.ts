@@ -30,6 +30,13 @@ export class SignupComponent {
   findEmployeeForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
   })
+  updateProfileForm: FormGroup = new FormGroup({
+
+    employee_number: new FormControl('', Validators.required),
+    first_name: new FormControl('', Validators.required),
+    last_name: new FormControl('', Validators.required),
+    is_admin: new FormControl(false, Validators.required),
+  })
   checkSidebar(): boolean{
     return this.sidebar.isSidebarVisible
   }
@@ -106,4 +113,6 @@ export class SignupComponent {
       })
     }
   }
+
+  onUpdateProfile() {}
 }
