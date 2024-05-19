@@ -13,19 +13,19 @@ export class HttpDataService {
   constructor(private http:HttpClient) { };
 
   getUserDepartments(id:number): Observable<Department[]> {
-    return this.http.get<Department[]>(`${environment.apiUrl}/user/${id}/user_departments/`).pipe(
+    return this.http.get<Department[]>(`${environment.apiUrl}/user/${id}/departments/`).pipe(
       catchError(this.handleError)
     )
   }
 
   getUserCharts(id:number): Observable<AlanChart[]> {
-    return this.http.get<AlanChart[]>(`${environment.apiUrl}/user/${id}/user_charts`).pipe(
+    return this.http.get<AlanChart[]>(`${environment.apiUrl}/user/${id}/charts`).pipe(
       catchError(this.handleError)
     )
   }
 
   addUserCharts(id:number, data:any) {
-    return this.http.post<AlanChart[]>(`${environment.apiUrl}/user/${id}/user_charts`, data).pipe(
+    return this.http.post<AlanChart[]>(`${environment.apiUrl}/user/${id}/charts`, data).pipe(
       catchError(this.handleError)
     )
   }
@@ -55,11 +55,6 @@ export class HttpDataService {
     )
   }
 
-
-
-  getAuth() {
-
-  }
 
   private handleError(error: any) {
     console.error('FAIL, client side', error);
