@@ -5,6 +5,7 @@ import { Department } from '../../models/department.model';
 import { AlanChart } from '../../models/alan-chart.model';
 import { ChartService } from '../../../core/services/chart.service';
 import { SidebarService } from '../../../core/services/sidebar.service';
+import { MetalPriceService } from '../../../core/services/metal-price.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,6 +15,8 @@ import { SidebarService } from '../../../core/services/sidebar.service';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent implements OnInit, OnDestroy{
+
+  universalDepartments: Department[] = [new Department("Metal Prices", [this.metalPriceService.metalPriceChart!])];
   displayingCharts:string | null = null;
   menuDepartments:Department[] | null = null;
   private userDepartmentSubscription!: Subscription;
@@ -21,26 +24,35 @@ export class SidebarComponent implements OnInit, OnDestroy{
   constructor(
     private departmentService:DepartmentService,
     private sidebarService:SidebarService,
-    private chartService:ChartService
+    private chartService:ChartService,
+    private metalPriceService:MetalPriceService
   ) {}
 
   ngOnInit(): void {
-    this.userDepartmentSubscription = this.departmentService.fetchAllDepartments().subscribe({
+    this.userDepartmentSubscription = this.departmentService.fetchUserDepartments().subscribe({
       next: (departments: Department[]) => {
         this.menuDepartments = departments;
+        this.appendUniversalDepartments();
       },
       error: (error) => {
         //In the event that the server fails (or is not running) it populates menu with the debug values
         this.menuDepartments = this.departmentService.userDepartments;
         console.error('Error fetching departments', error);
+        this.appendUniversalDepartments();
       }
-  });
+    });
   }
 
   ngOnDestroy(): void {
     if (this.userDepartmentSubscription) {
       this.userDepartmentSubscription.unsubscribe();
     }
+  }
+
+  appendUniversalDepartments(){
+    if(this.menuDepartments) {
+      this.menuDepartments.push(...this.universalDepartments);
+      };
   }
 
   // This method will toggle the display of charts within a given department in the sidebar

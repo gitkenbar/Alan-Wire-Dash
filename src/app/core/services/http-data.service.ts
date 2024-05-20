@@ -12,14 +12,18 @@ export class HttpDataService {
 
   constructor(private http:HttpClient) { };
 
-  getUserDepartments(id:number): Observable<Department[]> {
-    return this.http.get<Department[]>(`${environment.apiUrl}/profile/${id}/departments/`).pipe(
+  getUserDepartments(): Observable<any> {
+    let id = 1;
+    let res = this.http.get<any>(`${environment.apiUrl}/profiles/${id}/departments`).pipe(
       catchError(this.handleError)
-    )
+    );
+    return res;
   }
 
   //Make this Work
-  getUserCharts(id:number): Observable<AlanChart[]> {
+  getUserCharts(): Observable<AlanChart[]> {
+    //method to get current id needed here:
+    let id = 1;
     let res = this.http.get<any>(`${environment.apiUrl}/profile/${id}/charts`)
     .pipe(
       catchError(this.handleError)
@@ -41,7 +45,7 @@ export class HttpDataService {
       "unit": "mt",
       "metal": "copper",
       "rate": {
-        "price": 3.50,
+        "price": 10726.5049,
         "ask": 10727.7024,
         "bid": 10721.7059,
         "high": 10966.5955,
@@ -73,13 +77,6 @@ export class HttpDataService {
     );
     return res;
   }
-
-  addUserDepartments(id:number, data:any) {
-    return this.http.post<AlanChart[]>(`${environment.apiUrl}/profile/${id}/department`, data).pipe(
-      catchError(this.handleError)
-    )
-  }
-
 
 
   getAuth() {

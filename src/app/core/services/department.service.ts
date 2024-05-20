@@ -75,12 +75,35 @@ export class DepartmentService {
   constructor(private httpService:HttpDataService) {  }
 
   //Uses HTTP Service to retrieve array and emit through userDepartments BehaviorSubject
-  fetchAllDepartments() : Observable<Department[]>{
-    return this.httpService.getAllDepartments().pipe(
+  // fetchAllDepartments() : Observable<Department[]>{
+  //   return this.httpService.getAllDepartments().pipe(
+  //     map((responseData) => {
+  //       const departments: Department[] = responseData.data.departments.map((departmentData:any) => {
+  //         return new Department(
+  //           departmentData.department_name,
+  //           //WORK GOES HERE
+  //           //This should map the charts with each department
+  //           []
+  //         );
+  //       });
+  //       return departments;
+  //     }),
+  //     catchError((error) => {
+  //       console.error('Error fetching departments', error);
+  //       return throwError(() => error);
+  //     })
+  //   );
+  // }
+
+
+  fetchUserDepartments(): Observable<Department[]>{
+    return this.httpService.getUserDepartments().pipe(
       map((responseData) => {
-        const departments: Department[] = responseData.data.departments.map((departmentData:any) => {
+        const departments: Department[] = responseData.data.profile.map((departmentData:any) => {
           return new Department(
             departmentData.department_name,
+            //WORK GOES HERE
+            //This should map the charts with each department
             []
           );
         });
@@ -92,4 +115,6 @@ export class DepartmentService {
       })
     );
   }
+
+
 }
