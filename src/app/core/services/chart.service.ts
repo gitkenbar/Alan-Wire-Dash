@@ -40,17 +40,18 @@ export class ChartService {
   }
 
   //Uses HTTP Service to retrieve array and emit through userCharts BehaviorSubject
-  fetchUserCharts() : Observable<any>{
+  fetchUserCharts() : Observable<AlanChart[]>{
     return this.httpService.getUserCharts().pipe(
-      map((responseData) => {
+      map((responseData:any) => {
         console.log('user_chart response data', responseData);
-        const returnedUserCharts:AlanChart[] = responseData.data.user_charts.map((userChartData:any) => {
+        const returnedUserCharts:AlanChart[] = responseData.data.profile.user_charts.map((userChartData:any) => {
           return new AlanChart(
             userChartData.title,
             userChartData.chart_data
           );
         });
         this.userCharts.next(returnedUserCharts)
+        return returnedUserCharts;
       }),
       catchError((error) => {
         console.error('Error fetching user_charts', error);
@@ -62,11 +63,11 @@ export class ChartService {
 
 
   toggleFullscreen(){
-    this.cardIsFullscreen = !this.cardIsFullscreen
+    this.cardIsFullscreen = !this.cardIsFullscreen;
   }
 
   checkFullscreen(): boolean{
-    return this.cardIsFullscreen
+    return this.cardIsFullscreen;
   }
 
   /* DEBUG

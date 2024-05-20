@@ -32,7 +32,7 @@ export class MetalPriceService {
       "data": {
         "labels": ["Low", "Price", "Ask", "Bid", "High"],
         "datasets": [{
-          "label": "Monthly Sales",
+          "label": "Material Pricing",
           "data": [ ${this.metalPrice.rate.low}, ${this.metalPrice.rate.price}, ${this.metalPrice.rate.ask}, ${this.metalPrice.rate.bid}, ${this.metalPrice.rate.high}],
           "backgroundColor": "coral",
           "borderColor": "coral",

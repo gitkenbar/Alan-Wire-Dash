@@ -12,10 +12,12 @@ export class HttpDataService {
 
   constructor(private http:HttpClient) { };
 
-  getUserDepartments(id:number): Observable<Department[]> {
-    return this.http.get<Department[]>(`${environment.apiUrl}/profile/${id}/departments/`).pipe(
+  getUserDepartments(): Observable<any> {
+    let id = 1;
+    let res = this.http.get<any>(`${environment.apiUrl}/profiles/${id}/departments`).pipe(
       catchError(this.handleError)
-    )
+    );
+    return res;
   }
 
   //Make this Work
@@ -75,13 +77,6 @@ export class HttpDataService {
     );
     return res;
   }
-
-  addUserDepartments(id:number, data:any) {
-    return this.http.post<AlanChart[]>(`${environment.apiUrl}/profile/${id}/department`, data).pipe(
-      catchError(this.handleError)
-    )
-  }
-
 
 
   getAuth() {
