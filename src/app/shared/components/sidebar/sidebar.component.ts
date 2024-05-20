@@ -15,7 +15,7 @@ import { MetalPriceService } from '../../../core/services/metal-price.service';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent implements OnInit, OnDestroy{
-  //Admi
+  
   universalDepartments: Department[] = [new Department("Metal Prices", [this.metalPriceService.metalPriceChart!])];
   displayingCharts:string | null = null;
   menuDepartments:Department[] | null = null;

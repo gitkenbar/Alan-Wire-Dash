@@ -19,7 +19,9 @@ export class HttpDataService {
   }
 
   //Make this Work
-  getUserCharts(id:number): Observable<AlanChart[]> {
+  getUserCharts(): Observable<AlanChart[]> {
+    //method to get current id needed here:
+    let id = 1;
     let res = this.http.get<any>(`${environment.apiUrl}/profile/${id}/charts`)
     .pipe(
       catchError(this.handleError)
