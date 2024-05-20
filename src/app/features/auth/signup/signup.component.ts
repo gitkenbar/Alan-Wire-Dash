@@ -7,6 +7,9 @@ import { NavigationComponent } from '../../../shared/components/navigation/navig
 import { ChartDisplayComponent } from '../../../shared/components/chart-display/chart-display.component';
 import { SidebarComponent } from '../../../shared/components/sidebar/sidebar.component';
 import { SidebarService } from '../../../core/services/sidebar.service';
+import { Profile } from '../../../shared/models/profile';
+import { HttpDataService } from '../../../core/services/http-data.service';
+import { Position } from '../../../shared/models/position';
 
 @Component({
   selector: 'app-signup',
@@ -42,8 +45,37 @@ export class SignupComponent {
   }
   isError:boolean = false;
   name = "admin";
+  departments = [];
+  positions: Position[] = [];
 
-  constructor(private router:Router, private authService:AuthenticationService, private sidebar:SidebarService) { }
+  constructor(private router:Router, private authService:AuthenticationService, private sidebar:SidebarService, private httpDataService: HttpDataService) { }
+
+  ngOnInit(): void {
+    this.httpDataService.adminGetDepartments().subscribe({
+      next: (res: any) => {
+        this.departments = res.data
+
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+    this.httpDataService.adminGetPositions().subscribe({
+      next: (res: any) => {
+
+        // console.log(Array.isArray(this.positions))
+        console.log(res.data.positions[0])
+        // this.positions = (res.data.positions);
+        this.positions = this.transformToArray(res.data)
+        // console.log(Array.isArray(this.transformToArray(res.data)))
+        // this.positions = this.transformToArray(res.data);
+        // console.log(this.positions[0].position_title)
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
 
   onSignup() {
     if (this.signupForm.valid){
@@ -63,6 +95,8 @@ export class SignupComponent {
           this.authService.createProfile(employee_number, first_name, last_name, user_id, is_admin).subscribe({
             next: (profileRes: any) => {
               console.log('Profile created successfully:',profileRes)
+              let profile = profileRes.data.profile;
+              this.addProfileToForm(profile);
 
             },
             error: (profileError: any) => {
@@ -106,6 +140,9 @@ export class SignupComponent {
       this.authService.adminGetProfile(name).subscribe({
         next: (res:any) => {
           console.log(res);
+          let profile = res.data.profile;
+          console.log(profile, profile.first_name);
+          this.addProfileToForm(profile);
         },
         error: (error:any) => {
           console.error("onFind error", error)
@@ -114,5 +151,20 @@ export class SignupComponent {
     }
   }
 
+  addProfileToForm(profile: Profile){
+    this.updateProfileForm.setValue({
+      employee_number: profile.employee_number,
+      first_name: profile.first_name,
+      last_name: profile.last_name,
+      is_admin: profile.is_admin,
+    })
+  }
+
+  transformToArray(data: any) {
+    if (typeof data === 'object') {
+      return Object.keys(data).map(key => JSON.stringify(data[key]));
+    }
+    return [data];
+  }
   onUpdateProfile() {}
 }
