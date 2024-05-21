@@ -6,7 +6,7 @@
   </div>
   <div class="sidebar" [class.sidebar-full]="isSideBarVisible()">
     @for(department of menuDepartments; track department){
-      <a (click)="displayCharts(department.department_name)">
+      <a (click)="displayCharts(department)">
         <span class="sidebar-text" [class.expanded]="isSideBarVisible()">{{department.department_name}}</span>
       </a>
 

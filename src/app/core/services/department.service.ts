@@ -96,15 +96,15 @@ export class DepartmentService {
   // }
 
 
+
   fetchUserDepartments(): Observable<Department[]>{
     return this.httpService.getUserDepartments().pipe(
       map((responseData) => {
         const departments: Department[] = responseData.data.profile.map((departmentData:any) => {
           return new Department(
             departmentData.department_name,
-            //WORK GOES HERE
-            //This should map the charts with each department
-            []
+            [],
+            departmentData.id
           );
         });
         return departments;
@@ -116,5 +116,12 @@ export class DepartmentService {
     );
   }
 
-
+  appendCharts(department:Department) {
+    if(department.uid){
+      this.httpService.getDepartmentCharts(department.uid).subscribe({
+        next: data => department.chart_array = data,
+        error: error => console.log(error)
+      })
+    }
+  }
 }
