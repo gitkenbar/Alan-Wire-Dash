@@ -39,6 +39,7 @@ export class SignupComponent {
     first_name: new FormControl('', Validators.required),
     last_name: new FormControl('', Validators.required),
     is_admin: new FormControl(false, Validators.required),
+    positions: new FormControl([], Validators.required),
   })
   checkSidebar(): boolean{
     return this.sidebar.isSidebarVisible
@@ -47,35 +48,32 @@ export class SignupComponent {
   name = "admin";
   departments = [];
   positions: Position[] = [];
+  // selectedPositions = [];
 
   constructor(private router:Router, private authService:AuthenticationService, private sidebar:SidebarService, private httpDataService: HttpDataService) { }
 
   ngOnInit(): void {
-    this.httpDataService.adminGetDepartments().subscribe({
-      next: (res: any) => {
-        this.departments = res.data
+    // this.httpDataService.adminGetDepartments().subscribe({
+    //   next: (res: any) => {
+    //     this.departments = res.data
 
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
-    this.httpDataService.adminGetPositions().subscribe({
-      next: (res: any) => {
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   }
+    // })
 
-        // console.log(Array.isArray(this.positions))
-        console.log(res.data.positions[0])
-        // this.positions = (res.data.positions);
-        this.positions = this.transformToArray(res.data)
-        // console.log(Array.isArray(this.transformToArray(res.data)))
-        // this.positions = this.transformToArray(res.data);
-        // console.log(this.positions[0].position_title)
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
-  }
+
+      this.httpDataService.adminGetPositions().subscribe({
+        next: (res: any) => {
+          this.positions = res.data.positions
+          console.log(res.data.positions);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
+    }
 
   onSignup() {
     if (this.signupForm.valid){
@@ -157,6 +155,7 @@ export class SignupComponent {
       first_name: profile.first_name,
       last_name: profile.last_name,
       is_admin: profile.is_admin,
+      positions: profile.positions
     })
   }
 
@@ -166,5 +165,8 @@ export class SignupComponent {
     }
     return [data];
   }
-  onUpdateProfile() {}
+  // onUpdateProfile(employee_number: number, first_name: string, last_name: string, user_id: number, is_admin: boolean, positions: []) {
+  //   this.authService.adminUpdateProfile(employee_number, first_name, last_name, user_id, is_admin, positions)
+  // }
+  onUpdateProfile(){}
 }

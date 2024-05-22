@@ -98,4 +98,11 @@ export class HttpDataService {
   adminGetPositions() {
     return this.http.get<Position[]>(`${environment.apiUrl}/positions`)
   }
+
+  adminUpdateProfile(employee_number: number, first_name: string, last_name: string, user_id: number, is_admin: boolean, positions: []){
+    return this.http.put(`${environment.apiUrl}/profiles/`, {profile: { employee_number, first_name, last_name, user_id, is_admin, positions }})
+  }
+  adminDeleteProfile(profile_id: number){
+    return this.http.delete(`${environment.apiUrl}/profiles/${profile_id}`)
+  }
 }

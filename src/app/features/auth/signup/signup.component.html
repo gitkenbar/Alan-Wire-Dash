@@ -151,9 +151,17 @@
               Add Position
             </button>
             <ul class="dropdown-menu dropdown-menu-dark">
-              @for(position of positions; track position.id){
-              <li><a class="dropdown-item"> {{position}}</a></li>
-              }
+              <!-- <li>@for(position of positions; track position.id){
+              <a class="dropdown-item"> {{position.position_title}}</a>
+              }</li> -->
+              <li>
+                @for(position of positions; track position.id){
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="positions"  formControlName="positions" aria-describedby="positionHelp">
+                  <label class="form-check-label" for="positions">{{position.position_title}}</label>
+                </div>}
+              </li>
+
             </ul>
             <button class="btn btn-primary dropdown-toggle" type="button" style="margin: 2%;" data-bs-toggle="dropdown" aria-expanded="false">
               Add Department
