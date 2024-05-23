@@ -39,13 +39,15 @@ export class SignupComponent {
     first_name: new FormControl('', Validators.required),
     last_name: new FormControl('', Validators.required),
     is_admin: new FormControl(false, Validators.required),
-    positions: new FormControl([], Validators.required),
+    // positions: new FormControl([], Validators.required),
   })
   checkSidebar(): boolean{
     return this.sidebar.isSidebarVisible
   }
   isError:boolean = false;
   name = "admin";
+  profile_id = 0;
+  profile_is_admin = false;
   departments = [];
   positions: Position[] = [];
   // selectedPositions = [];
@@ -96,6 +98,7 @@ export class SignupComponent {
               let profile = profileRes.data.profile;
               this.addProfileToForm(profile);
 
+
             },
             error: (profileError: any) => {
               console.error('Profile creation error:', profileError);
@@ -139,8 +142,11 @@ export class SignupComponent {
         next: (res:any) => {
           console.log(res);
           let profile = res.data.profile;
-          console.log(profile, profile.first_name);
+          console.log("this is onfind", profile, profile.first_name, profile.id);
           this.addProfileToForm(profile);
+          this.profile_id = profile.id;
+          console.log(profile.id);
+          this.profile_is_admin = profile.is_admin;
         },
         error: (error:any) => {
           console.error("onFind error", error)
@@ -155,8 +161,9 @@ export class SignupComponent {
       first_name: profile.first_name,
       last_name: profile.last_name,
       is_admin: profile.is_admin,
-      positions: profile.positions
+      // positions: profile.positions
     })
+
   }
 
   transformToArray(data: any) {
