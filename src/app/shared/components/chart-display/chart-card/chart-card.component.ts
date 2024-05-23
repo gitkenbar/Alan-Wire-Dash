@@ -46,6 +46,7 @@ export class ChartCardComponent implements AfterViewInit {
 
 
   makeFullscreen(){
+    console.log('makeFullscreen() Activated')
     this.chartService.toggleFullscreen()
     this.fullscreenChart.emit(this.chartFromParent)
   }
