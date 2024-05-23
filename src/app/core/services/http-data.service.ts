@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Department } from '../../shared/models/department.model';
-import { Observable, catchError, throwError, of } from 'rxjs';
+import { Observable, catchError, throwError, of, map, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { AlanChart } from '../../shared/models/alan-chart.model';
 
@@ -19,6 +18,25 @@ export class HttpDataService {
     );
     return res;
   }
+
+  getDepartmentCharts(chartId: number): Observable<AlanChart[]> {
+    return this.http.get<{ data: { profile: any[] } }>(`${environment.apiUrl}/departments/${chartId}/charts`).pipe(
+      tap(response => {
+        console.log(response);
+      }),
+      map(response =>
+        response.data.profile.map(chart => new AlanChart(chart.chart_title, chart.chart_data))
+      )
+    );
+  }
+
+
+  // getDepartmentCharts(chartId:number): Observable<any> {
+  //   let res = this.http.get<any>(`${environment.apiUrl}/departments/${chartId}/charts`).pipe(
+  //     catchError(this.handleError)
+  //   );
+  //   return res;
+  // }
 
   //Make this Work
   getUserCharts(): Observable<AlanChart[]> {

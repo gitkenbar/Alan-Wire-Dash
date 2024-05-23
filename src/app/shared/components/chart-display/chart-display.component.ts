@@ -15,8 +15,7 @@ import { SidebarService } from '../../../core/services/sidebar.service';
 export class ChartDisplayComponent implements OnInit, OnDestroy {
   fullChart!: AlanChart;
   private userChartSubscription!:Subscription;
-  //filler data until set with behavior subject
-  charts!:AlanChart[]| null;
+  charts!:AlanChart[] | null;
 
   constructor(
     private chartService:ChartService,
