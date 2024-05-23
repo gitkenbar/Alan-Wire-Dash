@@ -3,7 +3,6 @@
   box-shadow: 0px 0px 100px 1px var(--ALUMINUM-LIGHT);
   border-radius: 10px;
   border: none;
-  z-index: -1;
   aspect-ratio: 1 / 1;
   max-width: max-content;
 }
@@ -26,11 +25,12 @@ h5{
   display: flex;
 }
 
-.canvas-container{
+.canvas-fullscreen{
   align-self:auto;
   position: relative;
   margin: auto;
   height: 75vh;
+  width: 75vh;
 }
 
 .card-body{

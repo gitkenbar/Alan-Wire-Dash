@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, map, catchError, throwError } from 'rxjs';
 import { Department } from '../../shared/models/department.model';
 import { AlanChart } from '../../shared/models/alan-chart.model';
 import { HttpDataService } from './http-data.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'

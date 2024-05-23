@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Department } from '../../shared/models/department.model';
-import { Observable, catchError, throwError, of } from 'rxjs';
+import { Position } from '../../shared/models/position';
+import { Observable, catchError, throwError, of, map, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { AlanChart } from '../../shared/models/alan-chart.model';
+import { Department } from '../../shared/models/department.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,25 @@ export class HttpDataService {
     );
     return res;
   }
+
+  getDepartmentCharts(chartId: number): Observable<AlanChart[]> {
+    return this.http.get<{ data: { profile: any[] } }>(`${environment.apiUrl}/departments/${chartId}/charts`).pipe(
+      tap(response => {
+        console.log(response);
+      }),
+      map(response =>
+        response.data.profile.map(chart => new AlanChart(chart.chart_title, chart.chart_data))
+      )
+    );
+  }
+
+
+  // getDepartmentCharts(chartId:number): Observable<any> {
+  //   let res = this.http.get<any>(`${environment.apiUrl}/departments/${chartId}/charts`).pipe(
+  //     catchError(this.handleError)
+  //   );
+  //   return res;
+  // }
 
   //Make this Work
   getUserCharts(): Observable<AlanChart[]> {
@@ -78,13 +98,30 @@ export class HttpDataService {
     return res;
   }
 
-
-  getAuth() {
-
+  addUserDepartments(id:number, data:any) {
+    return this.http.post<AlanChart[]>(`${environment.apiUrl}/user/${id}/user_department`, data).pipe(
+      catchError(this.handleError)
+    )
   }
+
 
   private handleError(error: any) {
     console.error('FAIL, client side', error);
     return throwError(() => new Error('Something went wrong. Please try again later.'));
+  }
+
+  adminGetDepartments() {
+    return this.http.get<Department[]>(`${environment.apiUrl}/departments`)
+  }
+
+  adminGetPositions() {
+    return this.http.get<Position[]>(`${environment.apiUrl}/positions`)
+  }
+
+  adminUpdateProfile(employee_number: number, first_name: string, last_name: string, user_id: number, is_admin: boolean, positions: []){
+    return this.http.put(`${environment.apiUrl}/profiles/`, {profile: { employee_number, first_name, last_name, user_id, is_admin, positions }})
+  }
+  adminDeleteProfile(profile_id: number){
+    return this.http.delete(`${environment.apiUrl}/profiles/${profile_id}`)
   }
 }
