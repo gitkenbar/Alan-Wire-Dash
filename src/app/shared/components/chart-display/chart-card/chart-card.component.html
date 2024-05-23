@@ -1,8 +1,7 @@
-<div class="container">
-  <div>
+
       @if (isFullscreen()) {
         <!-- Full Screen -->
-          <div class="card">
+          <div class="card" (click)="makeFullscreen()">
             <div class="card-body">
               <h5 class="card-title">{{chartFromParent.chart_title}}</h5>
               <div class="canvas-container">
@@ -15,18 +14,17 @@
           </div>
       } @else {
         <!--  Dashboard -->
-          <div class="card">
-            <div class="card-body"  (click)="makeFullscreen()" >
-              <h5 class="card-title">{{chartFromParent.chart_title}}</h5>
+
+          <div class="card" (click)="makeFullscreen()">
+            <h5 class="card-title">{{chartFromParent.chart_title}}</h5>
+            <div class="card-body">
               <div>
-              <canvas id="ctx{{cardIndex}}" width="200" height="200"></canvas>
+                <canvas id="ctx{{cardIndex}}" width="200" height="200"></canvas>
               </div>
             </div>
-            <img src="../../../../../assets/svg/close.svg" alt="Remove" (click)="removeChart(chartFromParent)" class="removeIcon">
             <!-- <button class="btn btn-primary" (click)="makeFullscreen()">Fullscreen</button>
             <button type="button" class="btn btn-danger" (click)="removeChart(chartFromParent)">Remove</button> -->
             <!-- You can add more card elements here -->
           </div>
+
         }
-  </div>
-</div>

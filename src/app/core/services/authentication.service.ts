@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders , HttpHeaderResponse} from '@angular/common/htt
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { Profile } from '../../shared/models/profile'
 
 
 @Injectable({
@@ -47,7 +48,24 @@ export class AuthenticationService {
     const headers = {'authorization': `${this.getToken()}`};
     return this.http.get(`${environment.apiUrl}/current_user`, {headers: headers})
   }
+  adminGetProfiles() {
+    return this.http.get<Profile[]>(`${environment.apiUrl}/profiles`)
+  }
+  adminGetProfile(name:string){
+    return this.http.get<Profile>(`${environment.apiUrl}/profiles/name/${name}`)
+  }
+  createProfile(employee_number: number, first_name: string, last_name: string, user_id:number, is_admin: boolean) {
+    return this.http.post(`${environment.apiUrl}/profiles/`, {profile: { employee_number, first_name, last_name, user_id, is_admin}})
+  }
+
+  adminUpdateProfile(employee_number: number, first_name: string, last_name: string, is_admin: boolean, id: number) {
+    return this.http.put(`${environment.apiUrl}/profiles/${id}`, {profile: { employee_number, first_name, last_name, is_admin}})
+  }
+  adminDeleteProfile(profile_id: number){
+    return this.http.delete(`${environment.apiUrl}/profiles/${profile_id}`)
+  }
 }
+
 
 
 

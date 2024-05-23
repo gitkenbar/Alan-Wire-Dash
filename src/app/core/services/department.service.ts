@@ -37,7 +37,7 @@ export class DepartmentService {
             "label": "An Example Data",
             "data": [12, 35, 75, 81, 55, 67, 99],
             "fill": false,
-            "borderColor": "rgb(255, 0, 0)",
+            "borderColor": "green",
             "tension": 0.1
           }]
         }
@@ -54,8 +54,8 @@ export class DepartmentService {
           "datasets": [{
             "label": "Monthly Sales",
             "data": [65, 59, 80, 81, 56, 55, 40],
-            "backgroundColor": "#d0d0d0",
-            "borderColor": "#d0d0d0",
+            "backgroundColor": "red",
+            "borderColor": "red",
             "borderWidth": 1
           }]
         },
@@ -75,13 +75,36 @@ export class DepartmentService {
   constructor(private httpService:HttpDataService) {  }
 
   //Uses HTTP Service to retrieve array and emit through userDepartments BehaviorSubject
-  fetchAllDepartments() : Observable<Department[]>{
-    return this.httpService.getAllDepartments().pipe(
+  // fetchAllDepartments() : Observable<Department[]>{
+  //   return this.httpService.getAllDepartments().pipe(
+  //     map((responseData) => {
+  //       const departments: Department[] = responseData.data.departments.map((departmentData:any) => {
+  //         return new Department(
+  //           departmentData.department_name,
+  //           //WORK GOES HERE
+  //           //This should map the charts with each department
+  //           []
+  //         );
+  //       });
+  //       return departments;
+  //     }),
+  //     catchError((error) => {
+  //       console.error('Error fetching departments', error);
+  //       return throwError(() => error);
+  //     })
+  //   );
+  // }
+
+
+
+  fetchUserDepartments(): Observable<Department[]>{
+    return this.httpService.getUserDepartments().pipe(
       map((responseData) => {
-        const departments: Department[] = responseData.data.departments.map((departmentData:any) => {
+        const departments: Department[] = responseData.data.profile.map((departmentData:any) => {
           return new Department(
             departmentData.department_name,
-            []
+            [],
+            departmentData.id
           );
         });
         return departments;
@@ -91,5 +114,14 @@ export class DepartmentService {
         return throwError(() => error);
       })
     );
+  }
+
+  appendCharts(department:Department) {
+    if(department.uid){
+      this.httpService.getDepartmentCharts(department.uid).subscribe({
+        next: data => department.chart_array = data,
+        error: error => console.log(error)
+      })
+    }
   }
 }
