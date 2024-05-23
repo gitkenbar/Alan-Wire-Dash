@@ -121,7 +121,7 @@
     </div>
     <div class="col-4">
       <div class="bg-white rounded p4 shadow text-primary">
-        <form [formGroup]="updateProfileForm" (ngSubmit)="onUpdateProfile(this.profile_id)">
+        <form [formGroup]="updateProfileForm" (ngSubmit)="onUpdateProfile(employee_number, first_name, last_name, is_admin, this.profile_id)">
           <label style="margin: 10px;">Modify Employee Profile</label>
           <div class="form-group" style="display: flex; align-items: center;">
             <label for="employee_number" class="form-label" style="display: inline-block; width: 100px;"> Employee Number:</label>
@@ -177,6 +177,9 @@
           <div class="col text-center">
             <button type="submit" class="btn btn-outline-primary m3" style="margin: 2%;" >Update Profile</button>
             <button type="button" (click)="onDeleteProfile(this.profile_id)" class="btn btn-outline-primary m3" style="margin: 2%;" >Delete Profile</button>
+            @if (isError){
+              <p class="text-danger" role="alert">{{whatError}}</p>
+            }
           </div>
         </form>
 

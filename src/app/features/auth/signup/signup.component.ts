@@ -45,13 +45,19 @@ export class SignupComponent {
     return this.sidebar.isSidebarVisible
   }
   isError:boolean = false;
+  whatError:string = '';
   name:string = 'profile3';
   profile_id = 0;
   profile_is_admin = false;
   departments = [];
   positions: Position[] = [];
   // selectedPositions = [];
-  
+  employee_number: number = 0;
+  first_name: string = '';
+  last_name: string = '';
+  is_admin: boolean = false;
+ 
+
 
   constructor(private router:Router, private authService:AuthenticationService, private sidebar:SidebarService, private httpDataService: HttpDataService) { }
 
@@ -103,6 +109,7 @@ export class SignupComponent {
             },
             error: (profileError: any) => {
               console.error('Profile creation error:', profileError);
+              this.isError = true;
             }
           })
 
@@ -167,6 +174,11 @@ export class SignupComponent {
       is_admin: profile.is_admin,
       // positions: profile.positions
     })
+    this.signupForm.value.username
+    this.employee_number = this.updateProfileForm.value.employee_number;
+    this.first_name = this.updateProfileForm.value.first_name;
+    this.last_name = this.updateProfileForm.value.last_name;
+    this.is_admin = this.updateProfileForm.value.is_admin;
 
   }
 
@@ -179,7 +191,23 @@ export class SignupComponent {
   // onUpdateProfile(employee_number: number, first_name: string, last_name: string, user_id: number, is_admin: boolean, positions: []) {
   //   this.authService.adminUpdateProfile(employee_number, first_name, last_name, user_id, is_admin, positions)
   // }
-  onUpdateProfile(id: number){}
+  onUpdateProfile(employee_number: number, first_name: string, last_name: string, is_admin: boolean, id: number) {
+    this.employee_number = this.updateProfileForm.value.employee_number;
+    this.first_name = this.updateProfileForm.value.first_name;
+    this.last_name = this.updateProfileForm.value.last_name;
+    this.is_admin = this.updateProfileForm.value.is_admin;
+    this.authService.adminUpdateProfile(this.employee_number, this.first_name, this.last_name, this.is_admin, id = this.profile_id).subscribe({
+      next: (res:any) => {
+        console.log(res)
+        this.updateProfileForm.reset();
+      },
+      error: (err:any) => {
+        console.log(err);
+        this.isError = true;
+        this.whatError = err.error.message;
+      }
+    })
+  }
   onDeleteProfile(id: number){
     this.authService.adminDeleteProfile(id).subscribe({
     next: (res:any) => {
@@ -188,7 +216,10 @@ export class SignupComponent {
 
     },
     error: (err:any) => {
-      console.log(err);}
+      console.log(err);
+      this.isError = true;
+      this.whatError = err.error.message;
+    }
     })
   }
 }
