@@ -6,17 +6,15 @@
     </div>
   </div>
   <div class="row vh-100 align-items-center justify-content-center">
-    <div class="col-sm8 col-md-6 col-lg-3">
+    <div class="col-sm8 col-md-6 col-lg-4">
       <div class="text-center">
         <img src="../../../../assets/png/ReelTime01.png" class="image-fluid">
-      </div>
       <div class="bg-white rounded p4 shadow">
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
           <div class="m-3">
             <div class="form-group text-center">
               <label for="email" class="form-label">Email</label>
               <input type="email" class="form-control" formControlName="email" id="email" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email.</div>
             </div>
           </div>
           <div class="m-3">
@@ -29,12 +27,12 @@
             <button type="submit" class="btn btn-outline-primary m3">Login</button>
           </div>
           @if(isError){
-            <div class="alert alert-danger" role="alert">
+            <p class="text-danger" role="alert">
               Login Credentials Failed. Please try again.
-            </div>
+            </p>
           }
-          <p class="text-center m3">Don't have an account? <a routerLink="/signup" routerLinkActive="active" class="text-decoration-none">Register</a></p>
         </form>
+      </div>
       </div>
       <div class="text-center">
         <img src="../../../../assets/png/blueSpool.png" style="width: 100px;">
