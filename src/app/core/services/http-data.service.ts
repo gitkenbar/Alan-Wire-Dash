@@ -4,6 +4,7 @@ import { Position } from '../../shared/models/position';
 import { Observable, catchError, throwError, of, map, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { AlanChart } from '../../shared/models/alan-chart.model';
+import { Department } from '../../shared/models/department.model';
 
 @Injectable({
   providedIn: 'root'
