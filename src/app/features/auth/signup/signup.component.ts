@@ -45,12 +45,13 @@ export class SignupComponent {
     return this.sidebar.isSidebarVisible
   }
   isError:boolean = false;
-  name = "admin";
+  name:string = 'profile3';
   profile_id = 0;
   profile_is_admin = false;
   departments = [];
   positions: Position[] = [];
   // selectedPositions = [];
+  
 
   constructor(private router:Router, private authService:AuthenticationService, private sidebar:SidebarService, private httpDataService: HttpDataService) { }
 
@@ -136,8 +137,9 @@ export class SignupComponent {
 
   }
   onFind(name: string){
-    if (this.name.length > 0){
-      this.name = this.findEmployeeForm.value.name;
+    if (name.length > 0){
+      console.log(this.findEmployeeForm.value.name);
+      let name = this.findEmployeeForm.value.name;
       this.authService.adminGetProfile(name).subscribe({
         next: (res:any) => {
           console.log(res);
@@ -147,6 +149,8 @@ export class SignupComponent {
           this.profile_id = profile.id;
           console.log(profile.id);
           this.profile_is_admin = profile.is_admin;
+          name = profile.first_name;
+          console.log(name);
         },
         error: (error:any) => {
           console.error("onFind error", error)
@@ -175,5 +179,16 @@ export class SignupComponent {
   // onUpdateProfile(employee_number: number, first_name: string, last_name: string, user_id: number, is_admin: boolean, positions: []) {
   //   this.authService.adminUpdateProfile(employee_number, first_name, last_name, user_id, is_admin, positions)
   // }
-  onUpdateProfile(){}
+  onUpdateProfile(id: number){}
+  onDeleteProfile(id: number){
+    this.authService.adminDeleteProfile(id).subscribe({
+    next: (res:any) => {
+      console.log(res)
+      this.updateProfileForm.reset();
+
+    },
+    error: (err:any) => {
+      console.log(err);}
+    })
+  }
 }
