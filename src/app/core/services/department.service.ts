@@ -3,6 +3,8 @@ import { BehaviorSubject, Observable, catchError, map, throwError } from 'rxjs';
 import { Department } from '../../shared/models/department.model';
 import { AlanChart } from '../../shared/models/alan-chart.model';
 import { HttpDataService } from './http-data.service';
+import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -72,7 +74,7 @@ export class DepartmentService {
   ];
   userDepartments = <Department[] | null> (this.myUserDepartments);
 
-  constructor(private httpService:HttpDataService) {  }
+  constructor(private httpService:HttpDataService, private http:HttpClient) {  }
 
   //Uses HTTP Service to retrieve array and emit through userDepartments BehaviorSubject
   // fetchAllDepartments() : Observable<Department[]>{
@@ -94,8 +96,22 @@ export class DepartmentService {
   //     })
   //   );
   // }
+  deptGetToken(){
+    return localStorage.getItem('token');
+  }
+  deptGetUser(){
+    const token = this.deptGetToken()
+    const headers = {'Authorization': `Bearer ${token}`}
+    return this.http.get(`${environment.apiUrl}/current_user`, {headers: headers})
+  }
 
+  deptGetUserProfile(id:number){
+    return this.http.get(`${environment.apiUrl}/profiles/user_id/${id}`)
+  }
 
+  deptGetProfileDepartments(id:number){
+    return this.http.get(`${environment.apiUrl}/profiles/${id}/departments`)
+  }
 
   fetchUserDepartments(): Observable<Department[]>{
     return this.httpService.getUserDepartments().pipe(

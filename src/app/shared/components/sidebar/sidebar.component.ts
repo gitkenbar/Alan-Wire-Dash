@@ -20,6 +20,8 @@ export class SidebarComponent implements OnInit, OnDestroy{
   displayingCharts:string | null = null;
   menuDepartments:Department[] | null = null;
   private userDepartmentSubscription!: Subscription;
+  // token:string | null = null;
+  user: any;
 
   constructor(
     private departmentService:DepartmentService,
@@ -41,6 +43,24 @@ export class SidebarComponent implements OnInit, OnDestroy{
         this.appendUniversalDepartments();
       }
     });
+
+    this.departmentService.deptGetUser().subscribe({
+      next: (user:any) => {
+        const user_id = user.data.user.id;
+        this.departmentService.deptGetUserProfile(user_id).subscribe({
+          next: (profileRes: any) => {
+            const profile_id = profileRes.data.profile.id
+            console.log("Profile", profile_id);
+            this.departmentService.deptGetProfileDepartments(profile_id).subscribe({
+              next: (deptRes: any) => {
+                console.log("Departments", deptRes.data.profile);
+              }
+            })
+          }
+        })
+        console.log("User", user_id);
+      }
+    })
   }
 
   ngOnDestroy(): void {
