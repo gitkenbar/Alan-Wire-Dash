@@ -39,7 +39,7 @@ export class LoginComponent {
             const tokenArray = text.split(' ')
             let token = tokenArray[1]
             this.authService.setToken(token)
-            console.log(this.authService.getToken())
+            console.log("getToken", this.authService.getToken())
           }
           console.log(this.authService.getToken())
 

@@ -45,7 +45,8 @@ export class AuthenticationService {
   }
 
   getLoggedInUser() {
-    const headers = {'authorization': `${this.getToken()}`};
+    const token = this.getToken()
+    const headers = {'Authorization': `Bearer ${token}`}
     return this.http.get(`${environment.apiUrl}/current_user`, {headers: headers})
   }
   adminGetProfiles() {
