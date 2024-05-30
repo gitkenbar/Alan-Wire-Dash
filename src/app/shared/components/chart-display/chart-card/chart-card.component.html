@@ -1,30 +1,26 @@
-
-      @if (isFullscreen()) {
-        <!-- Full Screen -->
-          <div class="card" (click)="makeFullscreen()">
-            <div class="card-body">
-              <h5 class="card-title">{{chartFromParent.chart_title}}</h5>
-              <div class="canvas-fullscreen">
-                <canvas id="ctx" aspect-ratio="" width="200px" height="200px"></canvas>
-              </div>
-            </div>
-            <img src="../../../../../assets/svg/open_in_full.svg" alt="FullScreen" (click)="makeFullscreen()" class="fullIcon">
-            <!-- <button class="btn btn-primary" (click)="makeFullscreen()">Fullscreen</button>
-            <button type="button" class="btn btn-danger" (click)="removeChart(chartFromParent)">Remove</button> -->
-          </div>
-      } @else {
-        <!--  Dashboard -->
-
-          <div class="card" (click)="makeFullscreen()">
-            <h5 class="card-title">{{chartFromParent.chart_title}}</h5>
-            <div class="card-body">
-              <div>
-                <canvas id="ctx{{cardIndex}}" width="200" height="200"></canvas>
-              </div>
-            </div>
-            <!-- <button class="btn btn-primary" (click)="makeFullscreen()">Fullscreen</button>
-            <button type="button" class="btn btn-danger" (click)="removeChart(chartFromParent)">Remove</button> -->
-            <!-- You can add more card elements here -->
-          </div>
-
-        }
+@if (isFullscreen()) {
+  <!-- Full Screen -->
+    <div class="card" (click)="makeFullscreen()">
+      <div class="card-body">
+        <h5 class="card-title">{{chartFromParent.chart_title}}</h5>
+        <div class="canvas-fullscreen">
+          <canvas id="ctx" aspect-ratio="" width="200px" height="200px"></canvas>
+        </div>
+      </div>
+      <!-- <button class="btn btn-primary" (click)="makeFullscreen()">Fullscreen</button>
+      <button type="button" class="btn btn-danger" (click)="removeChart(chartFromParent)">Remove</button> -->
+    </div>
+} @else {
+  <!--  Dashboard -->
+    <div class="card" (click)="makeFullscreen()">
+      <div class="card-body">
+      <h5 class="card-title">{{chartFromParent.chart_title}}</h5>
+        <div class="canvas-dash">
+          <canvas id="ctx{{cardIndex}}" aspect-ratio="" width="200px" height="200px"></canvas>
+        </div>
+      </div>
+      <!-- <button class="btn btn-primary" (click)="makeFullscreen()">Fullscreen</button>
+      <button type="button" class="btn btn-danger" (click)="removeChart(chartFromParent)">Remove</button> -->
+      <!-- You can add more card elements here -->
+    </div>
+  }

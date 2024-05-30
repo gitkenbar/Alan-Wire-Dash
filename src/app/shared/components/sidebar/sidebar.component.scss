@@ -8,7 +8,7 @@
   color: var(--COPPER);
   background-color: var(--ALUMINUM-LIGHT);
   border-radius: 0 0 10px 0 ;
-  transition: width 0.3s ease;
+  transition: width 1s ease;
 }
 
 .sidebar-container{
@@ -22,13 +22,14 @@
 
 .sidebar{
   width: 95%;
+  left: -5rem;
   background-color: var(--UMBRA);
   border-right: 2px solid var(--ALANWIRE-BLUE-DARK);
-  transition: width 0.4s ease;
 }
 
 .sidebar.sidebar-full{
-  transition: left 0.4s ease;
+  left:0;
+  transition: width 1s ease;
 }
 
 .sidebar a{
@@ -39,16 +40,6 @@
   color: var(--ALUMINUM-LIGHT);
   background-color: var(--ALANWIRE-BLUE-LIGHT);
   text-decoration: none;
-}
-
-.sidebar a:hover{
-  transition: 0.3s ease;
-  font-weight:600;
-}
-
-
-.sidebar-text {
-  transition: font-size 0.2s;
 }
 
 

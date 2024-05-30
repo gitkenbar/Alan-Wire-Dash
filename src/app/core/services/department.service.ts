@@ -19,7 +19,7 @@ export class DepartmentService {
         "data": {
           "labels": ["R", "O", "Y", "G", "B", "I", "V"],
           "datasets": [{
-            "label": "An Example Data",
+            "label": "Sales in Dollars",
             "data": [65, 59, 80, 81, 90, 92, 96],
             "fill": false,
             "borderColor": "rgb(0, 255, 0)",
@@ -34,7 +34,7 @@ export class DepartmentService {
         "data": {
           "labels": ["R", "O", "Y", "G", "B", "I", "V"],
           "datasets": [{
-            "label": "An Example Data",
+            "label": "Price Per Unit (PPU)",
             "data": [12, 35, 75, 81, 55, 67, 99],
             "fill": false,
             "borderColor": "green",
